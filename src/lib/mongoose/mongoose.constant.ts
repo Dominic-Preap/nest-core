@@ -1,0 +1,1 @@
+export const MONGOOSE_TOKEN = 'MONGOOSE_INJECT_TOKEN';

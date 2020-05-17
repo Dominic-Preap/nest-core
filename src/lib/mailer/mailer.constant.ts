@@ -1,0 +1,1 @@
+export const MAILER_TOKEN = 'MAILER_INJECT_TOKEN';

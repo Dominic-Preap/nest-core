@@ -1,0 +1,34 @@
+# build files
+dist
+
+# dependencies
+node_modules
+
+# environment variables
+.env
+
+# IDE
+.awcache
+.idea
+
+# logs
+logs
+
+# misc
+.DS_Store
+npm-debug.log
+
+# tests
+.nyc_output
+coverage
+test
+
+# public
+public/*
+!public/robots.txt
+!public/uploads/.gitkeep
+
+config/*
+documentation/*
+website/build/*
+@project

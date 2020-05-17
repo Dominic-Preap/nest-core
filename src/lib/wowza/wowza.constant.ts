@@ -1,0 +1,1 @@
+export const WOWZA_TOKEN = 'WOWZA_INJECT_TOKEN';
