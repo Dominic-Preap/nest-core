@@ -1,5 +1,4 @@
-<!-- ![Logo of the project](http://pathmazing.com/img/logo-pathmazing.png) -->
-<img src="http://pathmazing.com/img/logo-pathmazing.png" alt="logo" align="right" />
+<img src="https://www.pngitem.com/pimgs/m/195-1951323_your-logo-here-png-company-logo-your-logo.png" alt="logo" align="right" width="300" />
 
 # Photo Enhancement API
 
@@ -7,13 +6,7 @@
 
 Image will come from client (HomeNet & Dealer Solution):
 
-Manager divided photos to supervisors then supervisors divided to Photo Editor to edit those images. Then, Supervisor will check every enhanced images. The edited images will go to Client QA Website for double check if edited image passes quality check by client QA; otherwise, the edited images will go back to photo editor. If images does not pass quality check by client QA, images will be back to supervisor. If pass, image will be sent to client:
-
-- HomeNet: fetching csv file from the provided url into local server
-- Dealer Solution: fetching photos from Amazon S3 into local server
-
-* HomeNet: generate csv feed and send to their FTP server
-* Dealer Solution: upload back into Amazon S3
+Manager divided photos to supervisors then supervisors divided to Photo Editor to edit those images. Then, Supervisor will check every enhanced images. The edited images will go to Client QA Website for double check if edited image passes quality check by client QA; otherwise, the edited images will go back to photo editor. If images does not pass quality check by client QA, images will be back to supervisor. If pass, image will be sent to client.
 
 ## Developing
 

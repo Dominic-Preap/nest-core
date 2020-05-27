@@ -1,7 +1,3 @@
-// import 'dotenv/config';
-import 'reflect-metadata';
-import 'source-map-support/register';
-
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
@@ -56,7 +52,7 @@ async function bootstrap() {
   // =================================
   // configureNestGlobals
   // =================================
-  const config = app.select(ConfigModule).get(ConfigService);
+  const config = app.select(ConfigModule).get(ConfigService, { strict: true });
   const authGuard = app.select(AuthModule).get(AuthGuard);
 
   // app.useWebSocketAdapter(new RedisIoAdapter(app, config));
