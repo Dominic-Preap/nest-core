@@ -18,7 +18,7 @@ class IsGreaterOrEqualConstraint implements ValidatorConstraintInterface {
 }
 
 export const IsGreaterOrEqual = (property: string, validationOptions?: ValidationOptions) => {
-  return (object: object, propertyName: string) => {
+  return (object: Record<string, unknown>, propertyName: string) => {
     registerDecorator({
       target: object.constructor,
       propertyName,

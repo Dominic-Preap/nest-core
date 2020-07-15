@@ -44,7 +44,7 @@ export class ChannelMetadataService extends SendBirdHelper {
    */
   async delete(params: I.DeleteOption) {
     const url = `${params.channel_type}/${params.channel_url}/metadata`;
-    return this.wrapper(this.http.delete<{}>(url));
+    return this.wrapper(this.http.delete(url));
   }
 }
 
@@ -90,6 +90,6 @@ export class ChannelMetacounterService extends SendBirdHelper {
    */
   async delete(params: I.DeleteMetacounterOption) {
     const url = `${params.channel_type}/${params.channel_url}/metacounter`;
-    return this.wrapper(this.http.delete<{}>(url));
+    return this.wrapper(this.http.delete(url));
   }
 }

@@ -139,7 +139,7 @@ export const ToArrayCreateLang = async <T>(locales: I.Locale, main: T, languages
  */
 export const ToArrayUpdateLang = async (
   locales: I.Locale,
-  main: object,
+  main: Record<string, unknown>,
   tableLocale: ModelCtor,
   queryOptions: I.QueryOption = {},
   languages?: Language[]

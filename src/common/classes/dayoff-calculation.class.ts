@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import { extendMoment } from 'moment-range';
 import * as Moment from 'moment-timezone';
 
-const moment = extendMoment(Moment);
+const moment = extendMoment(Moment as any);
 
 type WorkSchedule = { [key in Day]: Schedule[] };
 
@@ -100,8 +100,8 @@ export class DayOffCalculation {
   setDayOffs(startDate: Date, endDate: Date, timezone: string) {
     // Remove timezone and set zero second
     // https://stackoverflow.com/questions/28198626/display-datetime-with-momentjs-without-timezone-conversion
-    const start = moment(startDate).tz(timezone).utcOffset(0, true).second(0);
-    const end = moment(endDate).tz(timezone).utcOffset(0, true).second(0);
+    const start = ((moment(startDate) as unknown) as Moment.Moment).tz(timezone).utcOffset(0, true).second(0);
+    const end = ((moment(endDate) as unknown) as Moment.Moment).tz(timezone).utcOffset(0, true).second(0);
 
     // Set minutes to the nearest 30
     // https://stackoverflow.com/questions/25323823/round-moment-js-object-time-to-nearest-30-minute-interval/25323966

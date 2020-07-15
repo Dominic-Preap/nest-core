@@ -43,6 +43,6 @@ export class DataPrivacyService extends SendBirdHelper {
    */
   async unregister(params: I.UnregisterOption) {
     const url = `privacy/gdpr/${params.request_id}`;
-    return this.wrapper(this.http.delete<{}>(url));
+    return this.wrapper(this.http.delete(url));
   }
 }

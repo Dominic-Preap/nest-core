@@ -85,7 +85,7 @@ export class OpenChannelService extends SendBirdHelper {
    */
   async delete(params: I.DeleteOption) {
     const url = `open_channels/${params.channel_url}`;
-    return this.wrapper(this.http.delete<{}>(url));
+    return this.wrapper(this.http.delete(url));
   }
 
   // ===================================================
@@ -144,7 +144,7 @@ export class OpenChannelService extends SendBirdHelper {
    */
   async unbanUser(params: I.UnbanUserOption) {
     const url = `open_channels/${params.channel_url}/ban/${params.banned_user_id}`;
-    return this.wrapper(this.http.delete<{}>(url));
+    return this.wrapper(this.http.delete(url));
   }
 
   /**
@@ -188,6 +188,6 @@ export class OpenChannelService extends SendBirdHelper {
    */
   async unmuteUser(params: I.UnmuteUserOption) {
     const url = `open_channels/${params.channel_url}/mute/${params.muted_user_id}`;
-    return this.wrapper(this.http.delete<{}>(url));
+    return this.wrapper(this.http.delete(url));
   }
 }

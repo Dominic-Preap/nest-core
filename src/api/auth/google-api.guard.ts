@@ -34,7 +34,6 @@ export class GoogleAPIGuard implements CanActivate {
   async decode(token: string) {
     try {
       const { data } = await this.http
-        // eslint-disable-next-line @typescript-eslint/camelcase
         .get<GoogleTokenInfo>(this.URL, { params: { id_token: token } })
         .toPromise();
       return data;

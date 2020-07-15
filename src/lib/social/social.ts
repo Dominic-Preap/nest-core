@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { BadRequestException, HttpService } from '@nestjs/common';
 import { AxiosError, AxiosResponse } from 'axios';
 import { OAuth2Client } from 'google-auth-library';

@@ -45,7 +45,7 @@ export class MessageService extends SendBirdHelper {
   async update(params: I.UpdateOption) {
     const url = `${params.channel_type}/${params.channel_url}/messages/${params.message_id}`;
     const config = this.getFormData(params, 'file');
-    return this.wrapper(this.http.put<{}>(url, config.data, { headers: config.headers })); // prettier-ignore
+    return this.wrapper(this.http.put(url, config.data, { headers: config.headers })); // prettier-ignore
   }
 
   /**
@@ -78,7 +78,7 @@ export class MessageService extends SendBirdHelper {
    */
   async markAsRead(params: I.MarkAsReadOption) {
     const url = `group_channels/${params.channel_url}/messages/mark_as_read`;
-    return this.wrapper(this.http.put<{}>(url, params));
+    return this.wrapper(this.http.put(url, params));
   }
 
   /**
@@ -89,7 +89,7 @@ export class MessageService extends SendBirdHelper {
    */
   async delete(params: I.DeleteOption) {
     const url = `${params.channel_type}/${params.channel_url}/messages/${params.message_id}`;
-    return this.wrapper(this.http.delete<{}>(url));
+    return this.wrapper(this.http.delete(url));
   }
 
   /**
@@ -166,7 +166,7 @@ export class MessageService extends SendBirdHelper {
    */
   async removeMetadata(params: I.RemoveMetadataOption) {
     const url = `${params.channel_type}/${params.channel_url}/messages/${params.message_id}/sorted_metaarray`;
-    return this.wrapper(this.http.delete<{}>(url, { params })); // prettier-ignore
+    return this.wrapper(this.http.delete(url, { params })); // prettier-ignore
   }
 
   /**

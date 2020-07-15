@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { INestApplication } from '@nestjs/common';
 import { IoAdapter } from '@nestjs/platform-socket.io';
 import * as redisIoAdapter from 'socket.io-redis';

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { Logger } from '@nestjs/common';
 import * as NodeMediaServer from 'node-media-server';
 

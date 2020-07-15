@@ -44,6 +44,6 @@ export class UserMetadataService extends SendBirdHelper {
    */
   async delete(params: I.DeleteOption) {
     const url = `users/${params.user_id}/metadata`;
-    return this.wrapper(this.http.delete<{}>(url));
+    return this.wrapper(this.http.delete(url));
   }
 }

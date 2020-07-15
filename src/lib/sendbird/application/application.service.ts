@@ -33,7 +33,7 @@ export class ApplicationService extends SendBirdHelper {
    * @see https://docs.sendbird.com/platform/application#3_delete_all_applications
    */
   async delete() {
-    // return this.wrapper(this.http.delete<{}>(`applications`));
+    // return this.wrapper(this.http.delete(`applications`));
     throw new Error('Too dangerous to implement');
   }
 
@@ -283,7 +283,7 @@ export class ApplicationService extends SendBirdHelper {
    * @see https://docs.sendbird.com/platform/application#3_revoke_a_secondary_api_token
    */
   async revokeApiToken(apiToken: string) {
-    // return this.wrapper(this.http.delete<{}>(`applications/api_tokens/${apiToken}`));
+    // return this.wrapper(this.http.delete(`applications/api_tokens/${apiToken}`));
     throw new Error('Too dangerous to implement');
   }
 }
@@ -369,7 +369,7 @@ export class ChannelSettingService extends SendBirdHelper {
    */
   async deleteSettingsByChannelCustomType(params: I.DeleteSettingsByChannelCustomTypeOption) {
     const url = `applications/settings_by_channel_custom_type/${params.custom_type}`;
-    return this.wrapper(this.http.delete<{}>(url));
+    return this.wrapper(this.http.delete(url));
   }
 
   // =============================================================
@@ -395,7 +395,7 @@ export class ChannelSettingService extends SendBirdHelper {
    */
   async registerOperators(params: I.RegisterOperatorsOption) {
     const url = `applications/settings_by_channel_custom_type/${params.custom_type}/operators`;
-    return this.wrapper(this.http.post<{}>(url, params));
+    return this.wrapper(this.http.post(url, params));
   }
 
   /**
@@ -406,7 +406,7 @@ export class ChannelSettingService extends SendBirdHelper {
    */
   async unregisterOperators(params: I.UnregisterOperatorsOption) {
     const url = `applications/settings_by_channel_custom_type/${params.custom_type}/operators`;
-    return this.wrapper(this.http.delete<{}>(url, { data: params })); // prettier-ignore
+    return this.wrapper(this.http.delete(url, { data: params })); // prettier-ignore
   }
 
   // =============================================================
@@ -432,7 +432,7 @@ export class ChannelSettingService extends SendBirdHelper {
    */
   async banUsers(params: I.BanUsersOption) {
     const url = `applications/settings_by_channel_custom_type/${params.custom_type}/ban`;
-    return this.wrapper(this.http.post<{}>(url, params));
+    return this.wrapper(this.http.post(url, params));
   }
 
   /**
@@ -443,7 +443,7 @@ export class ChannelSettingService extends SendBirdHelper {
    */
   async unbanUsers(params: I.UnbanUsersOption) {
     const url = `applications/settings_by_channel_custom_type/${params.custom_type}/ban`;
-    return this.wrapper(this.http.delete<{}>(url, { data: params })); // prettier-ignore
+    return this.wrapper(this.http.delete(url, { data: params })); // prettier-ignore
   }
 
   /**
@@ -465,7 +465,7 @@ export class ChannelSettingService extends SendBirdHelper {
    */
   async muteUsers(params: I.MuteUsersOption) {
     const url = `applications/settings_by_channel_custom_type/${params.custom_type}/mute`;
-    return this.wrapper(this.http.post<{}>(url, params));
+    return this.wrapper(this.http.post(url, params));
   }
 
   /**
@@ -476,6 +476,6 @@ export class ChannelSettingService extends SendBirdHelper {
    */
   async unmuteUsers(params: I.UnmuteUsersOption) {
     const url = `applications/settings_by_channel_custom_type/${params.custom_type}/mute`;
-    return this.wrapper(this.http.delete<{}>(url, { data: params })); // prettier-ignore
+    return this.wrapper(this.http.delete(url, { data: params })); // prettier-ignore
   }
 }

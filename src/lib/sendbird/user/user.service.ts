@@ -58,7 +58,7 @@ export class UserService extends SendBirdHelper {
    */
   async delete(params: I.DeleteOption) {
     const url = `users/${params.user_id}`;
-    return this.wrapper(this.http.delete<{}>(url));
+    return this.wrapper(this.http.delete(url));
   }
 
   // ===================================================
@@ -84,7 +84,7 @@ export class UserService extends SendBirdHelper {
    */
   async leaveMyGroupChannels(params: I.LeaveMyGroupChannelsOption) {
     const url = `users/${params.user_id}/my_group_channels/leave`;
-    return this.wrapper(this.http.put<{}>(url, params));
+    return this.wrapper(this.http.put(url, params));
   }
 
   /**
@@ -183,7 +183,7 @@ export class UserService extends SendBirdHelper {
    */
   async markAsReadAll(params: I.MarkAsReadAllOption) {
     const url = `users/${params.user_id}/mark_as_read_all`;
-    return this.wrapper(this.http.put<{}>(url, null, { params })); // prettier-ignore
+    return this.wrapper(this.http.put(url, null, { params })); // prettier-ignore
   }
 
   /**
@@ -194,7 +194,7 @@ export class UserService extends SendBirdHelper {
    */
   async operatingChannelCustomTypes(params: I.OperatingChannelCustomTypesOption) {
     const url = `users/${params.user_id}/operating_channel_custom_types`;
-    return this.wrapper(this.http.post<{}>(url, params));
+    return this.wrapper(this.http.post(url, params));
   }
 
   /**
@@ -216,7 +216,7 @@ export class UserService extends SendBirdHelper {
    */
   async bannedChannelCustomTypes(params: I.BannedChannelCustomTypesOption) {
     const url = `users/${params.user_id}/banned_channel_custom_types`;
-    return this.wrapper(this.http.post<{}>(url, params));
+    return this.wrapper(this.http.post(url, params));
   }
 
   /**
@@ -238,7 +238,7 @@ export class UserService extends SendBirdHelper {
    */
   async mutedChannelCustomTypes(params: I.MutedChannelCustomTypesOption) {
     const url = `users/${params.user_id}/muted_channel_custom_types`;
-    return this.wrapper(this.http.post<{}>(url, params));
+    return this.wrapper(this.http.post(url, params));
   }
 
   /**
@@ -271,7 +271,7 @@ export class UserService extends SendBirdHelper {
    */
   async unblockUser(params: I.UnblockUserOption) {
     const url = `users/${params.user_id}/block/${params.target_id}`;
-    return this.wrapper(this.http.delete<{}>(url));
+    return this.wrapper(this.http.delete(url));
   }
 
   // ===================================================
@@ -366,7 +366,7 @@ export class UserService extends SendBirdHelper {
    */
   async resetPushReference(params: I.UserIdOption) {
     const url = `users/${params.user_id}/push_preference`;
-    return this.wrapper(this.http.delete<{}>(url));
+    return this.wrapper(this.http.delete(url));
   }
 
   /**

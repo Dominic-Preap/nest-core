@@ -107,7 +107,7 @@ export class GroupChannelService extends SendBirdHelper {
    */
   async declineInvitation(params: I.DeclineInvitationOption) {
     const url = `group_channels/${params.channel_url}/decline`;
-    return this.wrapper(this.http.put<{}>(url, params));
+    return this.wrapper(this.http.put(url, params));
   }
 
   /**
@@ -118,7 +118,7 @@ export class GroupChannelService extends SendBirdHelper {
    */
   async joinChannel(params: I.JoinChannelOption) {
     const url = `group_channels/${params.channel_url}/join`;
-    return this.wrapper(this.http.put<{}>(url, params));
+    return this.wrapper(this.http.put(url, params));
   }
 
   /**
@@ -129,7 +129,7 @@ export class GroupChannelService extends SendBirdHelper {
    */
   async leaveChannel(params: I.LeaveChannelOption) {
     const url = `group_channels/${params.channel_url}/leave`;
-    return this.wrapper(this.http.put<{}>(url, params));
+    return this.wrapper(this.http.put(url, params));
   }
 
   /**
@@ -140,7 +140,7 @@ export class GroupChannelService extends SendBirdHelper {
    */
   async hideChannel(params: I.HideChannelOption) {
     const url = `group_channels/${params.channel_url}/hide`;
-    return this.wrapper(this.http.put<{}>(url, params));
+    return this.wrapper(this.http.put(url, params));
   }
 
   /**
@@ -151,7 +151,7 @@ export class GroupChannelService extends SendBirdHelper {
    */
   async unhideChannel(params: I.UnhideChannelOption) {
     const url = `group_channels/${params.channel_url}/hide`;
-    return this.wrapper(this.http.delete<{}>(url, { data: params, params })); // prettier-ignore
+    return this.wrapper(this.http.delete(url, { data: params, params })); // prettier-ignore
   }
 
   /**
@@ -162,7 +162,7 @@ export class GroupChannelService extends SendBirdHelper {
    */
   async resetUserHistory(params: I.ResetUserHistoryOption) {
     const url = `group_channels/${params.channel_url}/reset_user_history`;
-    return this.wrapper(this.http.put<{}>(url, params));
+    return this.wrapper(this.http.put(url, params));
   }
 
   /**
@@ -184,7 +184,7 @@ export class GroupChannelService extends SendBirdHelper {
    */
   async delete(params: I.DeleteOption) {
     const url = `group_channels/${params.channel_url}`;
-    return this.wrapper(this.http.delete<{}>(url));
+    return this.wrapper(this.http.delete(url));
   }
 
   // ===================================================
@@ -210,7 +210,7 @@ export class GroupChannelService extends SendBirdHelper {
    */
   async registerOperators(params: I.RegisterOperatorsOption) {
     const url = `group_channels/${params.channel_url}/operators`;
-    return this.wrapper(this.http.post<{}>(url, params));
+    return this.wrapper(this.http.post(url, params));
   }
 
   /**
@@ -221,7 +221,7 @@ export class GroupChannelService extends SendBirdHelper {
    */
   async unregisterOperators(params: I.UnregisterOperatorsOption) {
     const url = `group_channels/${params.channel_url}/operators`;
-    return this.wrapper(this.http.delete<{}>(url, { data: params })); // prettier-ignore
+    return this.wrapper(this.http.delete(url, { data: params })); // prettier-ignore
   }
 
   // ===================================================
@@ -280,7 +280,7 @@ export class GroupChannelService extends SendBirdHelper {
    */
   async unbanUser(params: I.UnbanUserOption) {
     const url = `group_channels/${params.channel_url}/ban/${params.banned_user_id}`;
-    return this.wrapper(this.http.delete<{}>(url));
+    return this.wrapper(this.http.delete(url));
   }
 
   /**
@@ -324,6 +324,6 @@ export class GroupChannelService extends SendBirdHelper {
    */
   async unmuteUser(params: I.UnmuteUserOption) {
     const url = `group_channels/${params.channel_url}/mute/${params.muted_user_id}`;
-    return this.wrapper(this.http.delete<{}>(url));
+    return this.wrapper(this.http.delete(url));
   }
 }

@@ -10,7 +10,6 @@ import {
   IsEnum,
   IsIn,
   IsISO8601,
-  IsMilitaryTime,
   IsNotEmpty,
   IsNumber,
   IsOptional,
