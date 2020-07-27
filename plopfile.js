@@ -42,6 +42,7 @@ module.exports = function (plop) {
       { name: 'AWS',                  value: 'aws' },
       { name: 'Firebase Admin',       value: 'firebase-admin' },
       { name: 'Google Cloud Storage', value: 'google-cloud-storage' },
+      { name: 'Keycloak',             value: 'keycloak' },
       { name: 'I18Next',              value: 'i18next' },
       { name: 'IORedis',              value: 'ioredis' },
       { name: 'Mailer',               value: 'mailer' },
@@ -318,6 +319,15 @@ module.exports = function (plop) {
       config: [],
       crypto: [],
       dynamodb: ['@aws/dynamodb-data-mapper', '@aws/dynamodb-data-mapper-annotations'],
+      keycloak: [
+        '@nestjs/passport',
+        'jwks-rsa',
+        'keycloak-admin',
+        'openid-client',
+        'passport',
+        'passport-jwt',
+        '@types/passport-jwt'
+      ],
       i18next: ['i18next', 'i18next-express-middleware', 'i18next-node-fs-backend'],
       ioredis: ['ioredis', '@types/ioredis'],
       jwt: [],
@@ -400,6 +410,7 @@ module.exports = function (plop) {
     const gcloud      = libraries.every(x => x !== 'google-cloud-storage'); // prettier-ignore
     const i18next     = libraries.every(x => x !== 'i18next'); // prettier-ignore
     const ioredis     = libraries.every(x => x !== 'ioredis'); // prettier-ignore
+    const keycloak    = libraries.every(x => x !== 'keycloak'); // prettier-ignore
     const mailer      = libraries.every(x => x !== 'mailer'); // prettier-ignore
     const media       = libraries.every(x => x !== 'media-stream'); // prettier-ignore
     const mongoose    = libraries.every(x => x !== 'mongoose'); // prettier-ignore
@@ -464,6 +475,7 @@ module.exports = function (plop) {
         (gcloud     && line.includes('GoogleCloudStorageModule')) ||
         (i18next    && line.includes('I18NextModule')) ||
         (ioredis    && line.includes('IORedisModule')) ||
+        (keycloak   && line.includes('KeycloakModule')) ||
         (mailer     && line.includes('MailerModule')) ||
         (media      && line.includes('MediaStreamModule')) ||
         (mongoose   && line.includes('MongooseModule')) ||

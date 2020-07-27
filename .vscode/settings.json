@@ -55,6 +55,7 @@
     "elasticbeanstalk",
     "gmail",
     "homenet",
+    "keycloak",
     "ldap",
     "middlewares",
     "mimetype",

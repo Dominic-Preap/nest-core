@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.9.2
+
+_*Jul 27, 2020*_
+
+- 📦 add `KeycloakModule` module with `passport-jwt` & `keycloak-admin`
+
 ## 0.9.1
 
 _*Apr 09, 2020*_

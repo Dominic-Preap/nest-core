@@ -11,6 +11,7 @@ import { GoogleCloudStorageModule } from '@lib/google-cloud-storage';
 import { I18NextModule } from '@lib/i18next';
 import { IORedisModule } from '@lib/ioredis';
 import { JwtModule } from '@lib/jwt';
+import { KeycloakModule } from '@lib/keycloak';
 import { MailerModule } from '@lib/mailer';
 import { MediaStreamModule } from '@lib/media-stream';
 import { MongooseModule } from '@lib/mongoose';
@@ -36,6 +37,7 @@ import { ApiModule } from './api/api.module';
     GoogleCloudStorageModule,
     I18NextModule,
     IORedisModule,
+    KeycloakModule,
     JwtModule,
     MailerModule,
     MediaStreamModule,
