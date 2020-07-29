@@ -54,7 +54,7 @@
     "@nestjs/websockets": "7.3.2",
     "@typegoose/typegoose": "7.3.0",
     "archiver": "4.0.2",
-    "auth0": "2.27.0",
+    "auth0": "2.27.1",
     "aws-sdk": "2.713.0",
     "bcryptjs": "2.4.3",
     "cache-manager": "3.3.0",
