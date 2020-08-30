@@ -46,7 +46,7 @@ async function bootstrap() {
   app.useStaticAssets(resolve('.', 'public'));
   app.use(express.json({ limit: '5mb' }));
   app.use(compression());
-  app.use(helmet());
+  app.use(helmet({ contentSecurityPolicy: { reportOnly: true } }));
   app.use(morgan('dev'));
 
   // =================================

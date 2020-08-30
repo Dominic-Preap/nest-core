@@ -268,7 +268,6 @@ module.exports = function (plop) {
       '@types/bcryptjs',
       '@types/compression',
       '@types/express',
-      '@types/helmet',
       '@types/jest',
       '@types/lodash',
       '@types/mime-types',
