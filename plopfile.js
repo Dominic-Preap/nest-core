@@ -48,6 +48,7 @@ module.exports = function (plop) {
       { name: 'Mailer',               value: 'mailer' },
       { name: 'Media Stream',         value: 'media-stream' },
       { name: 'Mongoose',             value: 'mongoose' },
+      { name: 'Pagination Helper',    value: 'pagination' },
       { name: 'SendBird',             value: 'sendbird' },
       { name: 'Sequelize',            value: 'sequelize' },
       { name: 'Social',               value: 'social' },
@@ -75,6 +76,7 @@ module.exports = function (plop) {
       { name: 'Sharp (image manipulation)',                       value: 'sharp' },
       { name: 'Soap (classic bitch !!!)',                         value: 'soap' },
       { name: 'Upload Image/File API Helper',                     value: 'upload' },
+      { name: 'Validation Phone Number Helper',                   value: 'validate-phone' },
     ]
   };
 
@@ -332,6 +334,7 @@ module.exports = function (plop) {
       jwt: [],
       mailer: ['nodemailer', '@types/nodemailer'],
       mongoose: ['mongoose', '@typegoose/typegoose', '@types/mongoose'],
+      pagination: [],
       sendbird: ['form-data'],
       sequelize: [
         'callsites',
@@ -364,7 +367,8 @@ module.exports = function (plop) {
       pdfmake: ['pdfmake'],
       sharp: ['sharp', '@types/sharp'],
       soap: ['soap', '@types/soap', '@types/bluebird'],
-      upload: []
+      upload: [],
+      'validate-phone': ['libphonenumber-js']
     };
 
     for (const lib of [...libs, ...subLibs]) {
@@ -431,11 +435,13 @@ module.exports = function (plop) {
     const sanitize    = subLibraries.every(x => x !== 'sanitize-html'); // prettier-ignore
     const soap        = subLibraries.every(x => x !== 'soap'); // prettier-ignore
     const upload      = subLibraries.every(x => x !== 'upload'); // prettier-ignore
+    const valPhone    = subLibraries.every(x => x !== 'validate-phone'); // prettier-ignore
     // ------------------------------------------------------------------
     if (excel)      rimraf(resolve(commonPath, 'classes', 'excel.class.ts'), () => null); // prettier-ignore
     if (dayoff)     rimraf(resolve(commonPath, 'classes', 'dayoff-calculation.class.ts'), () => null); // prettier-ignore
     if (dynamodb)   rimraf(resolve(dynamodbPath), () => null); // prettier-ignore
     if (sanitize)   rimraf(resolve(commonPath, 'transformers', 'sanitize-html.transformer.ts'), () => null); // prettier-ignore
+    if (valPhone)   rimraf(resolve(commonPath, 'validators', 'is-phone-number.validator.ts'), () => null); // prettier-ignore
     if (soap)       rimraf(resolve(soapPath), () => null); // prettier-ignore
     if (upload)     rimraf(resolve(uploadPath), () => null); // prettier-ignore
     if (!example)   rimraf(resolve(examplePath), () => null); // prettier-ignore

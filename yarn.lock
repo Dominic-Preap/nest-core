@@ -1020,7 +1020,7 @@
     tslib "2.0.0"
     uuid "8.3.0"
 
-"@nestjs/config@^0.5.0":
+"@nestjs/config@0.5.0":
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/@nestjs/config/-/config-0.5.0.tgz#ad1110d937ec26941b8fce5f575859046f8d7b4b"
   integrity sha512-8vgakV722qNt3YBHbvhfwcNRLlwOv37pr5/1RUn5mYMmUh7JKobVNqHgTRWEuJK4BK3dCrhnjxPMPvHOCaA4LQ==
@@ -7715,7 +7715,7 @@ kareem@2.3.1:
   resolved "https://registry.yarnpkg.com/kareem/-/kareem-2.3.1.tgz#def12d9c941017fabfb00f873af95e9c99e1be87"
   integrity sha512-l3hLhffs9zqoDe8zjmb/mAN4B8VT3L56EUvKNqLFVs9YlFA+zx7ke1DO8STAdDyYNkeSo1nKmjuvQeI12So8Xw==
 
-keycloak-admin@^1.13.0:
+keycloak-admin@1.13.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/keycloak-admin/-/keycloak-admin-1.13.0.tgz#f6e6de0551155b228d8a551531096d7b4c9ff23f"
   integrity sha512-FIQGEqlVYnegIcTia1o5UIAR6iJR7moixo9YwsNe8zGhqsdMTo1lbAsWcS5aaGzfprL5Zyjk4O8BfbI/55pwmg==
@@ -7797,6 +7797,14 @@ levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+libphonenumber-js@1.7.57:
+  version "1.7.57"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.7.57.tgz#1ed4543b835523387f79783fb826a7e268a604fa"
+  integrity sha512-v6DkRf1ufgGXHb6NoKbQd1YlfWqOs6jym7WjPP+YF1YtbfiWwD7M/7/XUOW+if2jNlm5av4EzeL/lYf8ClJYjg==
+  dependencies:
+    minimist "^1.2.5"
+    xml2js "^0.4.17"
 
 lie@~3.3.0:
   version "3.3.0"
@@ -9139,7 +9147,7 @@ opencollective-postinstall@^2.0.2:
   resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.2.tgz#5657f1bede69b6e33a45939b061eb53d3c6c3a89"
   integrity sha512-pVOEP16TrAO2/fjej1IdOyupJY8KDUM1CvsaScRbw6oddvpQoOfGk4ywha0HKKVAD6RkW4x6Q+tNBwhf3Bgpuw==
 
-openid-client@^3.15.9:
+openid-client@3.15.9:
   version "3.15.9"
   resolved "https://registry.yarnpkg.com/openid-client/-/openid-client-3.15.9.tgz#eba7d7546159db69567dda90b8ade89667bffe76"
   integrity sha512-CNKMxM1oj4+JIWi/TQ4kGQuG2l5S/5yvSZ1wzz1fg+/fhD/MWRmqRB8GHW0EV+fbbSncDx9Lhoq04mu7S0/fbw==
