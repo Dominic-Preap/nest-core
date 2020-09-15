@@ -25,7 +25,6 @@ export * as U from './utils';
 |--------------------------------------------------------------------------
 */
 export { ExcelDocument, ExcelDocumentOption } from './classes/excel.class';
-export { PaginationDto } from './classes/pagination.class';
 export { PDFMake } from './classes/pdfmake.class';
 export { DayOffCalculation } from './classes/dayoff-calculation.class';
 
