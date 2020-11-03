@@ -51,14 +51,7 @@ export const databaseProvider = {
       .catch(err => Logger.error('Unable to connect to the database:', err.message));
 
     // ! Customize models by inject config class into that models
-    // sequelize.addModels(_.map(models, x => x));
-    sequelize.addModels(
-      _.map(models, x => {
-        // (x as any).__googleCloudStorageConfig = googleCloudStorageConfig;
-        // (x as any).__configService = configService;
-        return x;
-      })
-    );
+    sequelize.addModels(_.map(models, x => x));
 
     if (DB_SYNC) await sequelize.sync();
 

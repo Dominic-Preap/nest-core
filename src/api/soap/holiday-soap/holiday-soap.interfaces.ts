@@ -2,31 +2,27 @@ import * as soap from 'soap';
 
 type MethodResult<P> = [P, string, any, string];
 
-export type HolidaySoapAPI = soap.Client & HolidaySoapWSDL;
-
-interface HolidaySoapWSDL {
+export interface HolidaySoapAPI extends soap.Client {
   GetCountriesAvailableAsync(): Promise<MethodResult<GetCountriesAvailableResult>>;
   GetHolidayDateAsync(opt: GetHolidayDateOptions): Promise<MethodResult<GetHolidayDateResult>>;
   GetHolidaysAvailableAsync(opt: GetHolidaysAvailableOptions): Promise<MethodResult<GetHolidaysAvailableResult>>;
+  GetHolidaysForDateRangeAsync(opt: GetHolidaysForDateRangeOptions): Promise<MethodResult<GetHolidaysForDateRangeResult>>; // prettier-ignore
   GetHolidaysForMonthAsync(opt: GetHolidaysForMonthOptions): Promise<MethodResult<GetHolidaysForMonthResult>>;
   GetHolidaysForYearAsync(opt: GetHolidaysForYearOptions): Promise<MethodResult<GetHolidaysForYearResult>>;
-  GetHolidaysForDateRangeAsync(
-    opt: GetHolidaysForDateRangeOptions
-  ): Promise<MethodResult<GetHolidaysForDateRangeResult>>;
 }
+
 // ================================================
 // GetHolidaysAvailable
 // ================================================
 export interface GetCountriesAvailableResult {
   GetCountriesAvailableResult: {
-    CountryCode: CountryCode[];
+    CountryCode: Array<{
+      Code: string;
+      Description: string;
+    }>;
   };
 }
 
-interface CountryCode {
-  Code: string;
-  Description: string;
-}
 // ================================================
 // GetHolidayDate
 // ================================================

@@ -11,7 +11,10 @@ const PROMPT_EXAMPLES = 'examples';
 const PROMPT_PROJECT_NAME = 'project-name';
 const PROJECT = '@PROJECT';
 
-module.exports = function (plop) {
+module.exports = function (
+  /** @type {import('plop').NodePlopAPI} */
+  plop
+) {
   // ########################################################
   // REMOVED EXISTING PROJECT DIRECTORY
   // ########################################################
@@ -293,7 +296,6 @@ module.exports = function (plop) {
       'supertest',
       'ts-jest',
       'ts-loader',
-      'tsconfig-paths',
       'typescript'
     ];
 
@@ -342,7 +344,6 @@ module.exports = function (plop) {
         'sequelize',
         'sequelize-typescript',
         'string-template',
-        '@types/bluebird',
         '@types/callsite',
         '@types/node',
         '@types/string-template'
@@ -366,7 +367,7 @@ module.exports = function (plop) {
       excel: ['exceljs'],
       pdfmake: ['pdfmake'],
       sharp: ['sharp', '@types/sharp'],
-      soap: ['soap', '@types/soap', '@types/bluebird'],
+      soap: ['soap'],
       upload: [],
       'validate-phone': ['libphonenumber-js']
     };

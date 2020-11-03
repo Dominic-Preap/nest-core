@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.9.3
+
+_*Nov 03, 2020*_
+
+- 📐 update dependencies on `package.json`
+- 📐 update `.vscode` extensions
+- 📐 fix some coding
+
 ## 0.9.2
 
 _*Jul 27, 2020*_

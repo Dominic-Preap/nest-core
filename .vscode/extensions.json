@@ -1,6 +1,6 @@
 {
   "recommendations": [
-    "CoenraadS.bracket-pair-colorizer",
+    "CoenraadS.bracket-pair-colorizer-2",
     "EditorConfig.EditorConfig",
     "Tyriar.sort-lines",
     "aaron-bond.better-comments",
@@ -10,16 +10,11 @@
     "eamodio.gitlens",
     "esbenp.prettier-vscode",
     "formulahendry.code-runner",
-    "jebbs.plantuml",
-    "kisstkondoros.vscode-codemetrics",
     "kumar-harsh.graphql-for-vscode",
     "mikestead.dotenv",
-    "quicktype.quicktype",
     "rbbit.typescript-hero",
-    "sensourceinc.vscode-sql-beautify",
     "streetsidesoftware.code-spell-checker",
     "vscode-icons-team.vscode-icons",
-    "wayou.vscode-todo-highlight",
     "xabikos.JavaScriptSnippets",
     "yzhang.markdown-all-in-one"
   ]

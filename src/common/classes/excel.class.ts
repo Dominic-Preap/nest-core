@@ -52,7 +52,7 @@ export class ExcelDocument {
       ...x,
       width: x.width || 15,
       style: { alignment: { horizontal: 'left', vertical: 'middle' }, ...x.style }
-    }));
+    })) as any; // TODO: will verify again
     this.setTable(ws, sheetName, headerNames, rows);
   }
 
