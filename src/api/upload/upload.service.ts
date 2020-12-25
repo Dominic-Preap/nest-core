@@ -100,7 +100,7 @@ export class UploadService {
         )
         .on('error', e => {
           console.error('Upload Failed! ' + e.message, e.stack);
-          resolve(); // just ignore when upload fails
+          resolve('Upload failed!'); // just ignore when upload fails
         })
         .on('finish', () => {
           console.log('Upload Success!', fileName);

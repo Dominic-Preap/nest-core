@@ -1,20 +1,28 @@
 import { INestApplication } from '@nestjs/common';
 import { IoAdapter } from '@nestjs/platform-socket.io';
-import * as redisIoAdapter from 'socket.io-redis';
+import * as Redis from 'ioredis';
+import { createAdapter, RedisAdapter } from 'socket.io-redis';
 
 import { ConfigService } from '@lib/config';
 
+let pubClient: Redis.Redis;
+let subClient: Redis.Redis;
+
 export class RedisIoAdapter extends IoAdapter {
-  private redisAdapter: redisIoAdapter.RedisAdapter;
+  private redisAdapter: RedisAdapter;
 
   constructor(app: INestApplication, config: ConfigService) {
     super(app);
 
-    this.redisAdapter = redisIoAdapter({
-      host: config.get('REDIS_HOST'),
-      port: +config.get('REDIS_PORT'),
-      auth_pass: config.get('REDIS_AUTH_PASS')
-    });
+    if (!pubClient && !subClient) {
+      pubClient = new Redis({
+        host: config.get('REDIS_HOST'),
+        port: +config.get('REDIS_PORT'),
+        password: config.get('REDIS_AUTH_PASS')
+      });
+      subClient = pubClient.duplicate();
+    }
+    this.redisAdapter = createAdapter({ pubClient, subClient });
   }
 
   createIOServer(port: number, options?: any): any {

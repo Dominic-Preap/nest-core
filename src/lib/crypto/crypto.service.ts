@@ -62,7 +62,7 @@ export class CryptoService {
     decipher.setAuthTag(tag);
 
     // encrypt the given text (NOTE: text as any)
-    const decrypted = decipher.update(text as any, 'binary', 'utf8') + decipher.final('utf8');
+    const decrypted = decipher.update(text as any, 'base64', 'utf8') + decipher.final('utf8');
 
     return decrypted;
   }
