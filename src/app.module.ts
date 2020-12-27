@@ -8,6 +8,7 @@ import { ConfigModule } from '@lib/config';
 import { CryptoModule } from '@lib/crypto';
 import { FirebaseAdminModule } from '@lib/firebase-admin';
 import { GoogleCloudStorageModule } from '@lib/google-cloud-storage';
+import { GraphQLRequestModule } from '@lib/graphql-request';
 import { I18NextModule } from '@lib/i18next';
 import { IORedisModule } from '@lib/ioredis';
 import { JwtModule } from '@lib/jwt';
@@ -35,6 +36,7 @@ import { ApiModule } from './api/api.module';
     DynamoDBModule,
     FirebaseAdminModule,
     GoogleCloudStorageModule,
+    GraphQLRequestModule,
     I18NextModule,
     IORedisModule,
     KeycloakModule,

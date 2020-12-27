@@ -45,6 +45,7 @@ module.exports = function (
       { name: 'AWS',                  value: 'aws' },
       { name: 'Firebase Admin',       value: 'firebase-admin' },
       { name: 'Google Cloud Storage', value: 'google-cloud-storage' },
+      { name: 'Graphql Request',      value: 'graphql-request' },
       { name: 'Keycloak',             value: 'keycloak' },
       { name: 'I18Next',              value: 'i18next' },
       { name: 'IORedis',              value: 'ioredis' },
@@ -308,6 +309,7 @@ module.exports = function (
     const libPackages = {
       'firebase-admin': ['firebase-admin'],
       'google-cloud-storage': ['@google-cloud/storage'],
+      'graphql-request': ['graphql-request', 'graphql'],
       'media-stream': ['node-media-server'],
       auth0: [
         '@nestjs/passport',
@@ -412,6 +414,7 @@ module.exports = function (
     const aws         = libraries.every(x => x !== 'aws'); // prettier-ignore
     const fbadmin     = libraries.every(x => x !== 'firebase-admin'); // prettier-ignore
     const gcloud      = libraries.every(x => x !== 'google-cloud-storage'); // prettier-ignore
+    const gqlrequest  = libraries.every(x => x !== 'graphql-request'); // prettier-ignore
     const i18next     = libraries.every(x => x !== 'i18next'); // prettier-ignore
     const ioredis     = libraries.every(x => x !== 'ioredis'); // prettier-ignore
     const keycloak    = libraries.every(x => x !== 'keycloak'); // prettier-ignore
@@ -479,6 +482,7 @@ module.exports = function (
         (dynamodb   && line.includes('DynamoDBModule')) ||
         (fbadmin    && line.includes('FirebaseAdminModule')) ||
         (gcloud     && line.includes('GoogleCloudStorageModule')) ||
+        (gqlrequest && line.includes('GraphQLRequestModule')) ||
         (i18next    && line.includes('I18NextModule')) ||
         (ioredis    && line.includes('IORedisModule')) ||
         (keycloak   && line.includes('KeycloakModule')) ||

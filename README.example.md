@@ -75,12 +75,6 @@ JWT_SECRET=
 # Mongo Database Credential
 MONGO_URI=
 
-# S3 Credential
-S3_BUCKET=
-S3_ACCESS_KEY_ID=
-S3_SECRET_ACCESS_KEY=
-S3_PREFIX=
-
 # FTP
 FTP_HOST=""
 FTP_USER=""

@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.10.0
+
+_*Dec 27, 2020*_
+
+- 🔥 add `graphql-request` module
+- 📐 update `.env.example`
+
 ## 0.9.4
 
 _*Dec 25, 2020*_
