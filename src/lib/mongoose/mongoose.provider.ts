@@ -1,13 +1,16 @@
-import { Logger } from '@nestjs/common';
+import { FactoryProvider, Logger } from '@nestjs/common';
 import * as mongoose from 'mongoose';
+
+import * as schema from '@schemas';
 
 import { ConfigService } from '../config';
 import { MONGOOSE_TOKEN } from './mongoose.constant';
 import { MongooseConfig } from './mongoose.dto';
+import { getModelToken } from './mongoose.util';
 
 const logger = new Logger('MongooseModule');
 
-export const mongooseProvider = {
+export const MongooseProvider = {
   inject: [ConfigService],
   provide: MONGOOSE_TOKEN,
   useFactory: async (configService: ConfigService) => {
@@ -21,3 +24,10 @@ export const mongooseProvider = {
     }
   }
 };
+
+export const SchemaProviders = Object.values(schema)
+  .filter(x => x.prototype instanceof mongoose.Model)
+  .map<FactoryProvider>((model: any) => ({
+    provide: getModelToken(model.modelName),
+    useFactory: () => model
+  }));

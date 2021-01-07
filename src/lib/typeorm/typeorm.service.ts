@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
-import * as _ from 'lodash';
 
 import * as Entities from '@entities';
 import { ConfigService } from '@lib/config';
@@ -22,7 +21,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       password: DB_PASSWORD,
       database: DB_SCHEMA,
       logging: DB_LOGGING,
-      entities: _.map(Entities, x => x),
+      entities: Object.values(Entities),
       keepConnectionAlive: true // ! use this for when using webpack
       // synchronize: true DB_SYNC
       // connectString: For Oracle Connection "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=my_server)))"

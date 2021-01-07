@@ -1,9 +1,6 @@
-import { getModelForClass, prop, Ref } from '@typegoose/typegoose';
-import * as mongoose from 'mongoose';
+import { getModelForClass, mongoose, prop } from '@typegoose/typegoose';
 
-import { UserSchema } from './user.schema';
-
-export class AuditSchema {
+class AuditSchema {
   /**
    * Request method (GET, POST, PUT, DELETE)
    */
@@ -43,8 +40,8 @@ export class AuditSchema {
   /**
    * User who request the endpoint
    */
-  @prop({ ref: UserSchema, default: null })
-  userId!: Ref<UserSchema>;
+  @prop({ default: null })
+  userId?: mongoose.Types.ObjectId;
 
   /**
    * Username in case the user is delete
@@ -65,7 +62,6 @@ export class AuditSchema {
   handler!: string;
 }
 
-export const Audit = getModelForClass(AuditSchema, {
-  schemaOptions: { collection: 'Audits' },
-  existingMongoose: mongoose
+export const AuditModel = getModelForClass(AuditSchema, {
+  schemaOptions: { collection: 'Audits' }
 });

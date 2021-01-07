@@ -1,5 +1,6 @@
 import { Inject } from '@nestjs/common';
+import { Model } from 'mongoose';
 
-import { MONGOOSE_TOKEN } from './mongoose.constant';
+import { getModelToken } from './mongoose.util';
 
-export const InjectMongoose = () => Inject(MONGOOSE_TOKEN);
+export const InjectModel = (model: Model<any>) => Inject(getModelToken(model.modelName));

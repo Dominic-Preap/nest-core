@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.10.1
+
+_*Jan 06, 2021*_
+
+- 🔥 add `InjectModel` in `@lib/mongoose`
+- 🔥 add schema providers function in `@lib/mongoose`
+- 📐update on importing entity & repository in `@lib/typeorm`
+- ✏️rename `@schema` to `@schemas`
+- ❌remove `GoogleCloudStorageConfig` in `@lib/google-cloud-storage`
+- ❌remove `InjectMongoose` in `@lib/mongoose`
+- ❌remove `client-app.schema.ts`
+
 ## 0.10.0
 
 _*Dec 27, 2020*_

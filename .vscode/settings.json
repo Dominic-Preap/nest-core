@@ -21,7 +21,7 @@
   "typescriptHero.imports.grouping": [
     "Plains",
     "Modules",
-    "/^@api|@common|@dynamodb|@entities|@lib|@models|@queries|@repositories|@schema/",
+    "/^@api|@common|@dynamodb|@entities|@lib|@models|@queries|@repositories|@schemas/",
     "Workspace"
   ],
   "search.exclude": {

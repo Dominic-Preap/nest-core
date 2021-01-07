@@ -1,9 +1,8 @@
 import { getModelForClass, prop } from '@typegoose/typegoose';
-import * as mongoose from 'mongoose';
 
 import { T } from '@common';
 
-export class UserSchema {
+class UserSchema {
   @prop({ required: true })
   firstName!: string;
 
@@ -35,7 +34,6 @@ export class UserSchema {
   updatedBy!: string;
 }
 
-export const User = getModelForClass(UserSchema, {
-  schemaOptions: { collection: 'Users', timestamps: true },
-  existingMongoose: mongoose
+export const UserModel = getModelForClass(UserSchema, {
+  schemaOptions: { collection: 'Users', timestamps: true }
 });
