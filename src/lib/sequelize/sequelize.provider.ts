@@ -1,8 +1,8 @@
 import { Logger } from '@nestjs/common';
-import * as _ from 'lodash';
 import { Sequelize } from 'sequelize-typescript';
 
-import * as models from '../../models';
+import * as Models from '@models';
+
 import { ConfigService } from '../config';
 import { SEQUELIZE_TOKEN } from './sequelize.constant';
 import { SequelizeConfig } from './sequelize.dto';
@@ -51,7 +51,8 @@ export const databaseProvider = {
       .catch(err => Logger.error('Unable to connect to the database:', err.message));
 
     // ! Customize models by inject config class into that models
-    sequelize.addModels(_.map(models, x => x));
+    sequelize.addModels(Object.values(Models));
+    // sequelize.addModels(_.map(Models, x => x));
 
     if (DB_SYNC) await sequelize.sync();
 

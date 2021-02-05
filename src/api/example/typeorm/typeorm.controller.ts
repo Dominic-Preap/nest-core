@@ -3,14 +3,14 @@ import { ApiTags } from '@nestjs/swagger';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { User } from '@entities';
+import { UserEntity } from '@entities';
 import { UserRepository } from '@repositories';
 
 @ApiTags('Example - TypeORM')
 @Controller('example/typeorm')
 export class TypeORMController {
   constructor(
-    @InjectRepository(User) private readonly user: Repository<User>,
+    @InjectRepository(UserEntity) private readonly user: Repository<UserEntity>,
     @InjectRepository(UserRepository) private readonly userRepository: UserRepository
   ) {}
 

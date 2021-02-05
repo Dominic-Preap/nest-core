@@ -1,9 +1,9 @@
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-import { UserProfile } from './user-profile.entity';
+import { UserProfileEntity } from './user-profile.entity';
 
-@Entity('_Users')
-export class User {
+@Entity('Users')
+export class UserEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
@@ -16,8 +16,7 @@ export class User {
   @Column()
   organizationId!: number;
 
-  // prettier-ignore
-  @OneToOne(type => UserProfile, p => p.user)
+  @OneToOne(() => UserProfileEntity, p => p.user)
   @JoinColumn({ name: 'id' })
-  profile!: UserProfile;
+  profile!: UserProfileEntity;
 }

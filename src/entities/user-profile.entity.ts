@@ -1,17 +1,16 @@
 import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
 
-import { User } from './user.entity';
+import { UserEntity } from './user.entity';
 
-@Entity('_UserProfiles')
-export class UserProfile {
+@Entity('UserProfiles')
+export class UserProfileEntity {
   @PrimaryColumn()
   userId!: number;
 
   @Column()
   nickName!: string;
 
-  // prettier-ignore
-  @OneToOne(type => User, u => u.profile)
+  @OneToOne(() => UserEntity, u => u.profile)
   @JoinColumn()
-  user?: User;
+  user?: UserEntity;
 }

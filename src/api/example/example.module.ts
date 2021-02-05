@@ -10,6 +10,7 @@ import { PDFMakeController } from './pdfmake/pdfmake.controller';
 import { PdfMakeService } from './pdfmake/pdfmake.service';
 import { SequelizeController } from './sequelize/sequelize.controller';
 import { SoapController } from './soap/soap.controller';
+import { Tile38Controller } from './tile38/tile38.controller';
 import { TypeORMController } from './typeorm/typeorm.controller';
 import { UploadController } from './upload/upload.controller';
 
@@ -23,6 +24,7 @@ import { UploadController } from './upload/upload.controller';
     PDFMakeController,
     SequelizeController,
     SoapController,
+    Tile38Controller,
     TypeORMController,
     UploadController
   ],

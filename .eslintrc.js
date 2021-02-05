@@ -5,9 +5,7 @@
 
 module.exports = {
   root: true,
-  env: {
-    node: true
-  },
+  env: { node: true },
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   parserOptions: {
     extraFileExtensions: ['.json', '.pug'],
@@ -24,7 +22,6 @@ module.exports = {
     'plugin:prettier/recommended' // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
   ],
   rules: {
-    'no-console': 'off',
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
@@ -32,6 +29,8 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'no-console': 'off',
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'import/no-unresolved': 'off',
     'import/order': [
       'error',
@@ -44,12 +43,7 @@ module.exports = {
         }
       }
     ],
-    'prettier/prettier': [
-      'error',
-      {
-        endOfLine: 'auto'
-      }
-    ]
+
   },
   settings: {
     'import/internal-regex': '^@api|@common|@dynamodb|@entities|@lib|@models|@queries|@repositories|@schemas|@x/'

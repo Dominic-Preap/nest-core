@@ -57,6 +57,7 @@ module.exports = function (
       { name: 'Sequelize',            value: 'sequelize' },
       { name: 'Social',               value: 'social' },
       { name: 'Socket',               value: 'socket' },
+      { name: 'Tile38',               value: 'tile38' },
       { name: 'TypeORM',              value: 'typeorm' },
       { name: 'Twilio',               value: 'twilio' },
       { name: 'Wowza',                value: 'wowza' },
@@ -358,6 +359,7 @@ module.exports = function (
         'socket.io-redis',
         '@types/socket.io-redis'
       ],
+      tile38: ['ioredis', '@types/ioredis'],
       typeorm: ['@nestjs/typeorm', 'mysql2', 'typeorm'],
       twilio: ['twilio'],
       wowza: [],
@@ -425,6 +427,7 @@ module.exports = function (
     const sequelize   = libraries.every(x => x !== 'sequelize'); // prettier-ignore
     const social      = libraries.every(x => x !== 'social'); // prettier-ignore
     const socket      = libraries.every(x => x !== 'socket'); // prettier-ignore
+    const tile38      = libraries.every(x => x !== 'tile38'); // prettier-ignore
     const typeorm     = libraries.every(x => x !== 'typeorm'); // prettier-ignore
     const twilio      = libraries.every(x => x !== 'twilio'); // prettier-ignore
     const wowza       = libraries.every(x => x !== 'wowza'); // prettier-ignore
@@ -493,6 +496,7 @@ module.exports = function (
         (sequelize  && line.includes('SequelizeModule')) ||
         (social     && line.includes('SocialModule')) ||
         (socket     && line.includes('SocketModule')) ||
+        (tile38     && line.includes('Tile38Module')) ||
         (typeorm    && line.includes('TypeOrmModule')) ||
         (twilio     && line.includes('TwilioModule')) ||
         (wowza      && line.includes('WowzaModule'));

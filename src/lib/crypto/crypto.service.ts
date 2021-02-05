@@ -2,24 +2,17 @@ import * as crypto from 'crypto';
 
 import { CryptoConfig } from './crypto.dto';
 
-/*
-|--------------------------------------------------------------------------
-| References
-|--------------------------------------------------------------------------
-| https://gist.github.com/AndiDittrich/4629e7db04819244e843
-| https://gist.github.com/vlucas/2bd40f62d20c1d49237a109d491974eb
-| https://gist.github.com/yoavniran/c78a0991e0152b306c25|
-| https://gist.github.com/chris-rock/993d8a22c7138d1f0d2e
-|
-*/
-
 /**
  * Encryption and Decryption
- * @description https://gist.github.com/AndiDittrich/4629e7db04819244e843
+ * @see https://cryptobook.nakov.com
  */
 export class CryptoService {
   constructor(private readonly config: CryptoConfig) {}
 
+  /**
+   * Encryption using `aes-256-gcm`
+   * @see https://gist.github.com/AndiDittrich/4629e7db04819244e843
+   */
   encrypt(text: string) {
     // random initialization vector
     const iv = crypto.randomBytes(16);
@@ -44,6 +37,9 @@ export class CryptoService {
     return Buffer.concat([salt, iv, tag, encrypted]).toString('base64');
   }
 
+  /**
+   * Decryption using `aes-256-gcm`
+   */
   decrypt(cipherText: string) {
     // base64 decoding
     const bData = Buffer.from(cipherText, 'base64');

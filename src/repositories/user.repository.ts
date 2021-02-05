@@ -1,14 +1,14 @@
 import { EntityRepository, Repository } from 'typeorm';
 
-import { User, UserProfile } from '@entities';
+import { UserEntity, UserProfileEntity } from '@entities';
 
-@EntityRepository(User)
-export class UserRepository extends Repository<User> {
+@EntityRepository(UserEntity)
+export class UserRepository extends Repository<UserEntity> {
   async $findAndCountAll(opt: FindMeOpt) {
     const { name, email, organizationId, positionId, roleId, status } = opt;
     const q = this.createQueryBuilder('u')
       // .innerJoinAndSelect('u.profile', 'p')
-      .innerJoinAndMapMany('u.profile', UserProfile, 'p', 'p.userId = u.id')
+      .innerJoinAndMapMany('u.profile', UserProfileEntity, 'p', 'p.userId = u.id')
       .addSelect('u.id', 'id')
       .addSelect('email')
       .addSelect('p.nickName', 'nickName')

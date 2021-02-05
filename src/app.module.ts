@@ -20,6 +20,7 @@ import { SendBirdModule } from '@lib/sendbird';
 import { SequelizeModule } from '@lib/sequelize';
 import { SocialModule } from '@lib/social';
 import { SocketModule } from '@lib/socket';
+import { Tile38Module } from '@lib/tile38';
 import { TwilioModule } from '@lib/twilio';
 import { TypeOrmModule } from '@lib/typeorm';
 import { WowzaModule } from '@lib/wowza';
@@ -50,6 +51,7 @@ import { ApiModule } from './api/api.module';
     SocialModule,
     SocketModule,
     TypeOrmModule,
+    Tile38Module,
     TwilioModule,
     WowzaModule
   ]
