@@ -33,5 +33,7 @@ export class Excel4NodeService {
   }
 }
 
-const data1 = () => new Array(100).fill(0).map((x, i) => ({ id: ++i, name: 'Testing', createdAt: new Date() }));
-const data2 = () => new Array(60000).fill(0).map((x, i) => ({ week: `Week ${++i}`, total: ++i * 2 }));
+const data1 = () =>
+  new Array(100).fill(0).map((x, i) => ({ id: ++i, name: 'Testing', createdAt: new Date() }));
+const data2 = () =>
+  new Array(60000).fill(0).map((x, i) => ({ week: `Week ${++i}`, total: ++i * 2 }));

@@ -10,6 +10,10 @@ export class SoapController {
 
   @Get()
   getHolidayDate() {
-    return this.soap.GetHolidayDate({ countryCode: 'Canada', year: 2018, holidayCode: 'NEW-YEARS-DAY-ACTUAL' });
+    return this.soap.GetHolidayDate({
+      countryCode: 'Canada',
+      year: 2018,
+      holidayCode: 'NEW-YEARS-DAY-ACTUAL'
+    });
   }
 }

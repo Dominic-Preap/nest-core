@@ -1,10 +1,13 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository } from 'typeorm';
 
 import { UserEntity, UserProfileEntity } from '@entities';
+import { BaseRepository } from '@lib/typeorm/base.repository';
+
+import * as I from './interfaces/user.interface';
 
 @EntityRepository(UserEntity)
-export class UserRepository extends Repository<UserEntity> {
-  async $findAndCountAll(opt: FindMeOpt) {
+export class UserRepository extends BaseRepository<UserEntity> {
+  async $findAndCountAll(opt: I.FindMeOpt) {
     const { name, email, organizationId, positionId, roleId, status } = opt;
     const q = this.createQueryBuilder('u')
       // .innerJoinAndSelect('u.profile', 'p')
@@ -31,13 +34,4 @@ export class UserRepository extends Repository<UserEntity> {
     const [data, total] = await Promise.all([q.getMany(), q.getCount()]);
     return { data, total };
   }
-}
-
-interface FindMeOpt {
-  email?: string;
-  name?: string;
-  organizationId?: number;
-  positionId?: number;
-  roleId?: number;
-  status?: string;
 }

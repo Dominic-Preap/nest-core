@@ -23,7 +23,11 @@ export class FirebaseAdminService {
       .catch((error: string) => console.log('Error sending message:', error));
   }
 
-  private getPayload(title: string, body: string, data: any = {}): admin.messaging.MessagingPayload {
+  private getPayload(
+    title: string,
+    body: string,
+    data: any = {}
+  ): admin.messaging.MessagingPayload {
     return { data, notification: { title, body } };
   }
 }

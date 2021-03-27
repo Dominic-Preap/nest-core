@@ -21,7 +21,8 @@ export class GoogleAPIGuard implements CanActivate {
     const [scheme, token] = authToken.split(' ');
     // console.log('scheme', scheme);
     // console.log('token', token);
-    if (scheme.toLowerCase() !== 'bearer') throw new UnauthorizedException('Invalid Authorization Scheme');
+    if (scheme.toLowerCase() !== 'bearer')
+      throw new UnauthorizedException('Invalid Authorization Scheme');
     if (!token) throw new UnauthorizedException('Authorization token is missing.');
 
     const data = await this.decode(token);

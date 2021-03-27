@@ -5,10 +5,16 @@ type MethodResult<P> = [P, string, any, string];
 export interface HolidaySoapAPI extends soap.Client {
   GetCountriesAvailableAsync(): Promise<MethodResult<GetCountriesAvailableResult>>;
   GetHolidayDateAsync(opt: GetHolidayDateOptions): Promise<MethodResult<GetHolidayDateResult>>;
-  GetHolidaysAvailableAsync(opt: GetHolidaysAvailableOptions): Promise<MethodResult<GetHolidaysAvailableResult>>;
+  GetHolidaysAvailableAsync(
+    opt: GetHolidaysAvailableOptions
+  ): Promise<MethodResult<GetHolidaysAvailableResult>>;
   GetHolidaysForDateRangeAsync(opt: GetHolidaysForDateRangeOptions): Promise<MethodResult<GetHolidaysForDateRangeResult>>; // prettier-ignore
-  GetHolidaysForMonthAsync(opt: GetHolidaysForMonthOptions): Promise<MethodResult<GetHolidaysForMonthResult>>;
-  GetHolidaysForYearAsync(opt: GetHolidaysForYearOptions): Promise<MethodResult<GetHolidaysForYearResult>>;
+  GetHolidaysForMonthAsync(
+    opt: GetHolidaysForMonthOptions
+  ): Promise<MethodResult<GetHolidaysForMonthResult>>;
+  GetHolidaysForYearAsync(
+    opt: GetHolidaysForYearOptions
+  ): Promise<MethodResult<GetHolidaysForYearResult>>;
 }
 
 // ================================================

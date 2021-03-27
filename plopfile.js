@@ -344,10 +344,10 @@ module.exports = function (
       sequelize: [
         'callsites',
         'mysql2',
+        '@nestjs/sequelize',
         'sequelize',
         'sequelize-typescript',
         'string-template',
-        '@types/callsite',
         '@types/node',
         '@types/string-template'
       ],
@@ -360,7 +360,7 @@ module.exports = function (
         '@types/socket.io-redis'
       ],
       tile38: ['ioredis', '@types/ioredis'],
-      typeorm: ['@nestjs/typeorm', 'mysql2', 'typeorm'],
+      typeorm: ['@nestjs/typeorm', 'mysql2', 'typeorm', 'callsites'],
       twilio: ['twilio'],
       wowza: [],
       // -------------------------------------------------

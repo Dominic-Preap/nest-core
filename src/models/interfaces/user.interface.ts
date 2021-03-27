@@ -1,18 +1,4 @@
-export interface ValueOptions {
-  encryptedKey: string;
-  // -----------------
-  email: string;
-  phone: string;
-  firstName: string;
-  lastName: string;
-  nickName: string;
-  createdBy: string;
-  updatedBy: string;
-}
-
-export interface FindOneOptions {
-  encryptedKey: string;
-  // -----------------
+export interface FindOneOpt {
   email?: string;
   phone?: string;
   firstName?: string;
@@ -24,9 +10,8 @@ export interface FindOneOptions {
   status?: string;
 }
 
-export interface FindAndCountAllOptions extends FindOneOptions {
-  // -----------
-  order: string;
+export interface FindAndCountAllOpt extends FindOneOpt {
+  order?: string;
   limit: number;
   offset: number;
 }

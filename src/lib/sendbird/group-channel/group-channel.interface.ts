@@ -183,7 +183,11 @@ export interface BaseListChannelOption extends BaseLimitTokenOption {
    *
    * @default chronological
    */
-  order?: 'chronological' | 'latest_last_message' | 'channel_name_alphabetical' | 'metadata_value_alphabetical';
+  order?:
+    | 'chronological'
+    | 'latest_last_message'
+    | 'channel_name_alphabetical'
+    | 'metadata_value_alphabetical';
 
   /**
    * Specifies the key of an item in metadata. When the value of the `order` parameter is set to `metatdata_value_alphabetical`,
@@ -471,7 +475,9 @@ export interface CreateOption {
    * - **hidden_allow_auto_unhide**: the channel automatically gets unhidden when receiving a new message.
    * - **hidden_prevent_auto_unhide**: the channel keeps hidden though receiving a new message.
    */
-  hidden_status?: { [key: string]: 'unhidden' | 'hidden_allow_auto_unhide' | 'hidden_prevent_auto_unhide' };
+  hidden_status?: {
+    [key: string]: 'unhidden' | 'hidden_allow_auto_unhide' | 'hidden_prevent_auto_unhide';
+  };
 
   /**
    * Specifies an array of one or more IDs of the users to register as operators to the channel.
@@ -560,7 +566,12 @@ export interface ListMembersOption extends ChannelUrlOption, BaseLimitTokenOptio
    * Restricts the search scope to retrieve members based on whether or not they have accepted an invitation or whether or not they were invited by a friend.
    * Acceptable values are `invited_only`, `joined_only`, `invited_by_friend`, `invited_by_non_friend`, and `all`. (Default: `all`)
    */
-  member_state_filter?: 'all' | 'invited_only' | 'joined_only' | 'invited_by_friend' | 'invited_by_non_friend';
+  member_state_filter?:
+    | 'all'
+    | 'invited_only'
+    | 'joined_only'
+    | 'invited_by_friend'
+    | 'invited_by_non_friend';
 
   /**
    * 	Restricts the search scope to retrieve members who are muted in the channel or not. Acceptable values are `all`, `muted`, and `unmuted`. (Default: `all`)

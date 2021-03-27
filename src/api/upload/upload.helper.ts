@@ -71,7 +71,9 @@ export class ImageResizeHelper {
    * Return a single width & height object based on size (large, medium, small, extra small)
    */
   private sizeOf(dimension: string, size: Size) {
-    const [width, height] = dimension.split('x').map(x => Math.ceil(+x / (this.SIZES.get(size) || 1)));
+    const [width, height] = dimension
+      .split('x')
+      .map(x => Math.ceil(+x / (this.SIZES.get(size) || 1)));
     return { width, height };
   }
 

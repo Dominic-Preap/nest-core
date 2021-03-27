@@ -7,7 +7,11 @@ export class AppExceptionFilter implements ExceptionFilter {
     const res = host.switchToHttp().getResponse<Response>();
 
     const statusCode = exception.getStatus();
-    const response = exception.getResponse() as { statusCode: number; message: string | string[]; error: string };
+    const response = exception.getResponse() as {
+      statusCode: number;
+      message: string | string[];
+      error: string;
+    };
     const message = Array.isArray(response.message) ? response.message[0] : response.message;
 
     // TODO: customize your own error handler

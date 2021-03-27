@@ -15,7 +15,13 @@ export const MongooseProvider = {
   provide: MONGOOSE_TOKEN,
   useFactory: async (configService: ConfigService) => {
     const { MONGO_URI } = configService.validate('MongooseModule', MongooseConfig);
-    await mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+    // https://mongoosejs.com/docs/deprecations
+    await mongoose.connect(MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+      useCreateIndex: true
+    });
 
     if (mongoose.connection.readyState === 1) {
       logger.log('Connection has been established successfully.');

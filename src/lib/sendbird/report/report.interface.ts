@@ -101,7 +101,10 @@ interface ListReportResult extends BaseNextOption {
 // Report Message
 // ===================================
 
-export interface ListReportsOnMessageOption extends ChannelOption, MessageIdOption, BaseLimitTokenOption {}
+export interface ListReportsOnMessageOption
+  extends ChannelOption,
+    MessageIdOption,
+    BaseLimitTokenOption {}
 
 export type ListReportsOnMessageResult = ListReportResult;
 

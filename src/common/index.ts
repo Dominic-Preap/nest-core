@@ -53,7 +53,6 @@ export { AppExceptionFilter } from './exceptions/app-exception-filter';
 export { ApiGuard } from './guards/api.guard';
 export { Authenticate } from './guards/authenticate.guard';
 export { Authorize } from './guards/authorize.guard';
-export { RateLimiting } from './guards/rate-limiting.guard';
 
 /*
 |--------------------------------------------------------------------------

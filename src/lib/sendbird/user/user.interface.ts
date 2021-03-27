@@ -325,7 +325,11 @@ export interface MyGroupChannelsOption extends BaseListChannelOption, UserIdOpti
    *
    * @default unhidden_only
    */
-  hidden_mode?: 'unhidden_only' | 'hidden_only' | 'hidden_allow_auto_unhide' | 'hidden_prevent_auto_unhide';
+  hidden_mode?:
+    | 'unhidden_only'
+    | 'hidden_only'
+    | 'hidden_allow_auto_unhide'
+    | 'hidden_prevent_auto_unhide';
 
   /**
    * Restricts the search scope to retrieve group channels based on whether or not the user has accepted an invitation,
@@ -334,7 +338,12 @@ export interface MyGroupChannelsOption extends BaseListChannelOption, UserIdOpti
    *
    * @default all
    */
-  member_state_filter?: 'all' | 'invited_only' | 'joined_only' | 'invited_by_friend' | 'invited_by_non_friend';
+  member_state_filter?:
+    | 'all'
+    | 'invited_only'
+    | 'joined_only'
+    | 'invited_by_friend'
+    | 'invited_by_non_friend';
 
   /**
    * Restricts the search scope to only retrieve group channels with one or more unread messages,
@@ -506,7 +515,9 @@ export interface ChannelInvitationPreferenceResult {
   auto_accept: boolean;
 }
 
-export interface UpdateChannelInvitationPreferenceOption extends UserIdOption, ChannelInvitationPreferenceResult {}
+export interface UpdateChannelInvitationPreferenceOption
+  extends UserIdOption,
+    ChannelInvitationPreferenceResult {}
 
 export type UpdateChannelInvitationPreferenceResult = ChannelInvitationPreferenceResult;
 

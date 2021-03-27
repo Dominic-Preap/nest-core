@@ -76,10 +76,19 @@ export class InvoiceDocument {
     for (const invoice of this.invoices) {
       const contentInformation = this.getInformation(invoice);
       const contentItemsTable = this.getItemsTable(invoice.products, invoice.totalAmount);
-      const contentPageBreak: Content = { text: '', pageBreak: i !== this.invoices.length ? 'before' : undefined };
+      const contentPageBreak: Content = {
+        text: '',
+        pageBreak: i !== this.invoices.length ? 'before' : undefined
+      };
 
       contents.push(
-        ...[this.contentTitle, contentInformation, contentItemsTable, this.contentSignature, contentPageBreak]
+        ...[
+          this.contentTitle,
+          contentInformation,
+          contentItemsTable,
+          this.contentSignature,
+          contentPageBreak
+        ]
       );
       i++;
     }
@@ -149,7 +158,9 @@ export class InvoiceDocument {
 
   private setInformationKeyValuePair(key: string, value: string | Date) {
     const v =
-      typeof value !== 'string' ? moment.tz(value, 'Asia/Phnom_Penh').locale('km-KH').format('DD-MMMM-YYYY') : value;
+      typeof value !== 'string'
+        ? moment.tz(value, 'Asia/Phnom_Penh').locale('km-KH').format('DD-MMMM-YYYY')
+        : value;
 
     return [
       {
@@ -168,7 +179,11 @@ export class InvoiceDocument {
   // ###################################################
 
   private getItemsTable(products: Product[], totalAmount: number): Content {
-    const emptyCell: Content = { text: '', fillColor: 'white', border: [false, false, false, false] };
+    const emptyCell: Content = {
+      text: '',
+      fillColor: 'white',
+      border: [false, false, false, false]
+    };
 
     return {
       table: {
@@ -184,7 +199,12 @@ export class InvoiceDocument {
             { style: ['tableHeader', 'tableHeaderMargin'], rowSpan: 2, text: 'តម្លៃក្រោយ\nបញ្ចុះ' },
             { style: ['tableHeader', 'tableHeaderMarginDouble'], rowSpan: 2, text: 'តម្លៃសរុប​' }
           ],
-          [{}, {}, { style: 'tableHeader', text: 'កេស' }, { style: 'tableHeader', text: 'ដប/កំប៉ុង' }],
+          [
+            {},
+            {},
+            { style: 'tableHeader', text: 'កេស' },
+            { style: 'tableHeader', text: 'ដប/កំប៉ុង' }
+          ],
 
           // ! Important
           ...this.getItemsTableRow(products),
@@ -234,7 +254,12 @@ export class InvoiceDocument {
           {
             text: [
               { text: x.name },
-              { text: x.promotion ? ' (*)' : '', color: 'red', font: 'Roboto', preserveLeadingSpaces: true }
+              {
+                text: x.promotion ? ' (*)' : '',
+                color: 'red',
+                font: 'Roboto',
+                preserveLeadingSpaces: true
+              }
             ]
           },
           { text: x.CA, alignment: 'center' },

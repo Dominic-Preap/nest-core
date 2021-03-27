@@ -8,7 +8,10 @@ import { InjectIORedis, InjectIORedisPubSub } from '@lib/ioredis';
 export class IORedisService {
   private log = debug('api:ioredis');
 
-  constructor(@InjectIORedisPubSub() private readonly sub: Redis, @InjectIORedis() private readonly redis: Redis) {
+  constructor(
+    @InjectIORedisPubSub() private readonly sub: Redis,
+    @InjectIORedis() private readonly redis: Redis
+  ) {
     this.sub.removeAllListeners('message');
     this.sub.on('message', async (channel: any, message: string) => {
       const [, type, key] = message.split(':'); // * Naming Convention : ex:TYPE:KEY

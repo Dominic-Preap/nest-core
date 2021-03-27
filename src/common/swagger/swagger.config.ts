@@ -1,4 +1,8 @@
-import { CaseInsensitiveFilterPlugin, CustomLayoutPlugin, operationsSorter } from './swagger.plugin';
+import {
+  CaseInsensitiveFilterPlugin,
+  CustomLayoutPlugin,
+  operationsSorter
+} from './swagger.plugin';
 
 // For more info about config:
 // https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md

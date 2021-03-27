@@ -18,7 +18,12 @@ export class AuthService {
   async login({ username, password }: LoginBody) {
     // TODO: use your own user table
     // const user = await User.findOne({ username });
-    const user = { id: 1, username: 'my-username', password: 'my-password', isArchived: false };
+    const user = {
+      id: 1,
+      username: 'my-username',
+      password: '$2y$12$yY/PpVYPizAclFCrNI112esVbtr40vkBtCoTSQowHvev/al.rKlW.', // 'my-password',
+      isArchived: false
+    };
 
     // Check if user exist and active, then compare the password
     if (!user || user.isArchived) throw new InvalidAccountError();

@@ -65,7 +65,6 @@ export class CryptoService {
 
   /**
    * NodeJS create md5 hash from string
-   * @see https://gist.github.com/kitek/1579117/8cd97e0d85c3fca35036d4f76dd6f32d8ffe1e46
    */
   createMD5Hex(data: string) {
     return crypto.createHash('md5').update(data).digest('hex');

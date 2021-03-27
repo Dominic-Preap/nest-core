@@ -73,7 +73,9 @@ export class UploadService {
             const regexPath = path.resolve(TEMP_PATH, `${fileName.split('.')[0]}*`); // ex: Test.jpg, Test_s.jpg, Test_l.jpg
             const allFiles = shell.ls(regexPath); // list all files by regex
             const bucket = folderType;
-            await Promise.all(allFiles.map(f => this.uploadToCloud(`${bucket}/${path.basename(f)}`, f))); // 5 files to be uploaded
+            await Promise.all(
+              allFiles.map(f => this.uploadToCloud(`${bucket}/${path.basename(f)}`, f))
+            ); // 5 files to be uploaded
 
             shell.rm('-rf', regexPath); // remove by regex from temp directory
             await file.delete(); // remove file in temp in google cloud

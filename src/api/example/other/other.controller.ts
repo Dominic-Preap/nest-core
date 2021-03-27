@@ -38,11 +38,21 @@ export class OtherController {
     const dayOff = new DayOffCalculation();
 
     dayOff.setSchedule({
-      mon: [{ breaks: [{ start: '12:00', end: '13:00' }], works: [{ start: '8:00', end: '17:00' }] }],
-      tue: [{ breaks: [{ start: '12:00', end: '13:00' }], works: [{ start: '8:00', end: '17:00' }] }],
-      wed: [{ breaks: [{ start: '12:00', end: '13:00' }], works: [{ start: '8:00', end: '17:00' }] }],
-      thu: [{ breaks: [{ start: '12:00', end: '13:00' }], works: [{ start: '8:00', end: '17:00' }] }],
-      fri: [{ breaks: [{ start: '12:00', end: '13:00' }], works: [{ start: '8:00', end: '17:00' }] }],
+      mon: [
+        { breaks: [{ start: '12:00', end: '13:00' }], works: [{ start: '8:00', end: '17:00' }] }
+      ],
+      tue: [
+        { breaks: [{ start: '12:00', end: '13:00' }], works: [{ start: '8:00', end: '17:00' }] }
+      ],
+      wed: [
+        { breaks: [{ start: '12:00', end: '13:00' }], works: [{ start: '8:00', end: '17:00' }] }
+      ],
+      thu: [
+        { breaks: [{ start: '12:00', end: '13:00' }], works: [{ start: '8:00', end: '17:00' }] }
+      ],
+      fri: [
+        { breaks: [{ start: '12:00', end: '13:00' }], works: [{ start: '8:00', end: '17:00' }] }
+      ],
       sat: [],
       sun: []
     });

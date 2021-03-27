@@ -16,9 +16,7 @@ export class TypeORMController {
 
   @Get()
   async get() {
-    const a = await this.user.find({ select: ['id', 'email', 'status'], take: 5, order: { id: 'DESC' } });
-    console.log(a);
-    return a;
+    return this.user.find({ select: ['id', 'email', 'status'], take: 5, order: { id: 'DESC' } });
   }
 
   @Post()

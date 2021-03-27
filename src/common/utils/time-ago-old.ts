@@ -4,7 +4,8 @@ import * as moment from 'moment-timezone';
  * Calculate time ago from a date
  */
 export const getTimeAgoX = (date: Date, timezone = 'Asia/Bangkok') => {
-  const p = (v: number, type: 'second' | 'minute' | 'hour') => `${v} ${type}${v > 1 ? 's' : ''} ago`; // pluralize
+  const p = (v: number, type: 'second' | 'minute' | 'hour') =>
+    `${v} ${type}${v > 1 ? 's' : ''} ago`; // pluralize
 
   const now = moment.tz(timezone); // present
   const past = moment.tz(date, timezone); // past

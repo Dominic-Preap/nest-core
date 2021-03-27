@@ -21,7 +21,8 @@ export const CSVMulterOption: MulterOptions = {
   },
   storage: multer.diskStorage({
     destination: (req, file, cb) => cb(null, destination),
-    filename: (req, file, cb) => cb(null, `${uuid.v4().replace(/-/g, '')}${path.extname(file.originalname)}`) // mime.extension(file.mimetype)
+    filename: (req, file, cb) =>
+      cb(null, `${uuid.v4().replace(/-/g, '')}${path.extname(file.originalname)}`) // mime.extension(file.mimetype)
   }),
   fileFilter: (req: Request, file, cb) => {
     if (!fs.existsSync(destination)) shell.mkdir('-p', destination);

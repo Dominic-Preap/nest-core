@@ -25,7 +25,9 @@ export class Social {
     });
 
     return new Promise<TwitterResult>((resolve, reject) =>
-      client.get('account/verify_credentials', (error, tweet) => (error ? reject(error) : resolve(tweet)))
+      client.get('account/verify_credentials', (error, tweet) =>
+        error ? reject(error) : resolve(tweet)
+      )
     ).catch(e => {
       const [error] = e;
       throw new BadRequestException(error.message);

@@ -172,7 +172,9 @@ export interface ListPushConfigurationsResult {
   push_configurations: PushConfiguration[];
 }
 
-export interface ViewPushConfigurationOption extends ListPushConfigurationsOption, ProviderIdOption {}
+export interface ViewPushConfigurationOption
+  extends ListPushConfigurationsOption,
+    ProviderIdOption {}
 
 export interface AddFCMPushConfigurationOption {
   /**
@@ -186,7 +188,9 @@ export interface AddFCMPushConfigurationOption {
   push_sound?: string;
 }
 
-export interface UpdateFCMPushConfigurationOption extends ProviderIdOption, Partial<AddFCMPushConfigurationOption> {}
+export interface UpdateFCMPushConfigurationOption
+  extends ProviderIdOption,
+    Partial<AddFCMPushConfigurationOption> {}
 
 export interface UpdateFCMPushConfigurationResult {
   /**
@@ -238,7 +242,9 @@ export interface AddAPNsPushConfigurationOption {
   push_sound?: string;
 }
 
-export interface UpdateAPNsPushConfigurationOption extends ProviderIdOption, Partial<AddAPNsPushConfigurationOption> {}
+export interface UpdateAPNsPushConfigurationOption
+  extends ProviderIdOption,
+    Partial<AddAPNsPushConfigurationOption> {}
 
 export type UpdateApnsPushConfigurationResult = UpdateFCMPushConfigurationResult;
 

@@ -1,10 +1,16 @@
 import { Global, Module } from '@nestjs/common';
+import { SequelizeModule as _SequelizeModule } from '@nestjs/sequelize';
 
-import { databaseProvider } from './sequelize.provider';
+import * as Models from '@models';
+
+import { SequelizeConfigService } from './sequelize.service';
 
 @Global()
 @Module({
-  providers: [databaseProvider],
-  exports: [databaseProvider]
+  imports: [
+    _SequelizeModule.forRootAsync({ useClass: SequelizeConfigService }),
+    _SequelizeModule.forFeature(Object.values(Models))
+  ],
+  exports: [_SequelizeModule]
 })
 export class SequelizeModule {}

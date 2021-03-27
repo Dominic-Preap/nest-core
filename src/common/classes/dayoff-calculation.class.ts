@@ -100,8 +100,14 @@ export class DayOffCalculation {
   setDayOffs(startDate: Date, endDate: Date, timezone: string) {
     // Remove timezone and set zero second
     // https://stackoverflow.com/questions/28198626/display-datetime-with-momentjs-without-timezone-conversion
-    const start = ((moment(startDate) as unknown) as Moment.Moment).tz(timezone).utcOffset(0, true).second(0);
-    const end = ((moment(endDate) as unknown) as Moment.Moment).tz(timezone).utcOffset(0, true).second(0);
+    const start = ((moment(startDate) as unknown) as Moment.Moment)
+      .tz(timezone)
+      .utcOffset(0, true)
+      .second(0);
+    const end = ((moment(endDate) as unknown) as Moment.Moment)
+      .tz(timezone)
+      .utcOffset(0, true)
+      .second(0);
 
     // Set minutes to the nearest 30
     // https://stackoverflow.com/questions/25323823/round-moment-js-object-time-to-nearest-30-minute-interval/25323966
@@ -154,8 +160,12 @@ export class DayOffCalculation {
     let workHour = 0;
     let breakHour = 0;
     for (const schedule of schedules) {
-      const workHours = schedule.works.map(time => this.getIntersectHour({ time, date, first, last }));
-      const breakHours = schedule.breaks.map(time => this.getIntersectHour({ time, date, first, last }));
+      const workHours = schedule.works.map(time =>
+        this.getIntersectHour({ time, date, first, last })
+      );
+      const breakHours = schedule.breaks.map(time =>
+        this.getIntersectHour({ time, date, first, last })
+      );
 
       workHour += _.sum(workHours);
       breakHour += _.sum(breakHours);
@@ -182,11 +192,17 @@ export class DayOffCalculation {
       .minute(+endMinute);
 
     const dayOffStartDate = first
-      ? moment(date).startOf('day').hour(this.startDate.getUTCHours()).minute(this.startDate.getUTCMinutes())
+      ? moment(date)
+          .startOf('day')
+          .hour(this.startDate.getUTCHours())
+          .minute(this.startDate.getUTCMinutes())
       : officeStartDate;
 
     const dayOffEndDate = last
-      ? moment(date).startOf('day').hour(this.endDate.getUTCHours()).minute(this.endDate.getUTCMinutes())
+      ? moment(date)
+          .startOf('day')
+          .hour(this.endDate.getUTCHours())
+          .minute(this.endDate.getUTCMinutes())
       : officeEndDate;
 
     const officeRange = moment.range(officeStartDate, officeEndDate);

@@ -17,7 +17,9 @@ export const CaseInsensitiveFilterPlugin = () => {
   return {
     fn: {
       opsFilter: (taggedOps, phrase) => {
-        return taggedOps.filter((tagObj, tag) => tag.toLowerCase().indexOf(phrase.toLowerCase()) !== -1);
+        return taggedOps.filter(
+          (tagObj, tag) => tag.toLowerCase().indexOf(phrase.toLowerCase()) !== -1
+        );
       }
     }
   };

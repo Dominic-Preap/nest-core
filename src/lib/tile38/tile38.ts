@@ -4,7 +4,9 @@ import * as I from './tile38.interfaces';
 
 export class Tile38 {
   constructor(readonly redis: Redis.Redis) {
-    this.output('json').catch(err => console.warn(`unable to set output mode to json: ${err.message}`));
+    this.output('json').catch(err =>
+      console.warn(`unable to set output mode to json: ${err.message}`)
+    );
   }
 
   /*
@@ -592,8 +594,10 @@ export class Tile38 {
     if (opt.match) args.push('MATCH', opt.match);
     if (opt.distance) args.push('DISTANCE');
     if (opt.order) args.push(opt.order);
-    if (opt.where) Object.entries(opt.where).forEach(([k, v]) => args.push('WHERE', k, v.min, v.max));
-    if (opt.whereIn) Object.entries(opt.whereIn).forEach(([k, v]) => args.push('WHEREIN', k, v.length, ...v));
+    if (opt.where)
+      Object.entries(opt.where).forEach(([k, v]) => args.push('WHERE', k, v.min, v.max));
+    if (opt.whereIn)
+      Object.entries(opt.whereIn).forEach(([k, v]) => args.push('WHEREIN', k, v.length, ...v));
     if (opt.whereEval) this.whereEval('WHEREEVAL', opt.whereEval);
     if (opt.whereEvalSha) this.whereEval('WHEREEVALSHA', opt.whereEvalSha);
     if (opt.clip) args.push('CLIP');
@@ -612,7 +616,14 @@ export class Tile38 {
     // Area Format Option
     // ------------------
     if (opt.get) args.push('GET', opt.get.key, opt.get.id);
-    if (opt.bounds) args.push('BOUNDS', opt.bounds.minlat, opt.bounds.minlon, opt.bounds.maxlat, opt.bounds.maxlon);
+    if (opt.bounds)
+      args.push(
+        'BOUNDS',
+        opt.bounds.minlat,
+        opt.bounds.minlon,
+        opt.bounds.maxlat,
+        opt.bounds.maxlon
+      );
     if (opt.object) args.push('OBJECT', JSON.stringify(opt.object));
     if (opt.circle) args.push('CIRCLE', opt.circle.lat, opt.circle.lon, opt.circle.meters);
     if (opt.tile) args.push('TILE', opt.tile.x, opt.tile.y, opt.tile.zoom);
@@ -629,7 +640,10 @@ export class Tile38 {
     return [command, script, args.length, ...args];
   }
 
-  private async sendCommand<T extends I.BasedResult>(command: string, args: any[] = []): Promise<T> {
+  private async sendCommand<T extends I.BasedResult>(
+    command: string,
+    args: any[] = []
+  ): Promise<T> {
     console.log(`SendCommand: ${command} ${args.join(' ')}`);
     const result = (await this.redis.send_command(command, args).then(x => JSON.parse(x))) as T;
     if (!result.ok) throw new Error((result as any).err);

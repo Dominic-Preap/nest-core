@@ -8,8 +8,19 @@ declare module 'pdfmake' {
     type Background = string | ContentProperties | Contents;
     type BackgroundFunction = (currentPage: number, pageSize: number) => Background;
     type HeaderFooter = string | ContentProperties | Contents;
-    type HeaderFooterFunction = (currentPage: number, pageCount: number, pageSize: number) => HeaderFooter;
-    type ListType = 'square' | 'circle' | 'lower-alpha' | 'upper-alpha' | 'lower-roman' | 'upper-roman' | 'none';
+    type HeaderFooterFunction = (
+      currentPage: number,
+      pageCount: number,
+      pageSize: number
+    ) => HeaderFooter;
+    type ListType =
+      | 'square'
+      | 'circle'
+      | 'lower-alpha'
+      | 'upper-alpha'
+      | 'lower-roman'
+      | 'upper-roman'
+      | 'none';
     type Margin = number | [number, number] | [number, number, number, number];
     type TableLayout = 'lightHorizontalLines' | 'headerLineOnly' | 'noBorders';
     type Width = 'auto' | '*' | string | number;
@@ -503,7 +514,12 @@ declare module 'pdfmake' {
       /**
        * TODO: function can be specified, which can determine if a page break should be inserted before a node
        */
-      pageBreakBefore?(currentNode, followingNodesOnPage, nodesOnNextPage, previousNodesOnPage): boolean;
+      pageBreakBefore?(
+        currentNode,
+        followingNodesOnPage,
+        nodesOnNextPage,
+        previousNodesOnPage
+      ): boolean;
     }
 
     interface TFontFamily {

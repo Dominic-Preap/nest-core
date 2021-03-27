@@ -4,8 +4,8 @@
     "EditorConfig.EditorConfig",
     "Tyriar.sort-lines",
     "aaron-bond.better-comments",
-    "alefragnani.Bookmarks",
-    "christian-kohler.path-intellisense",
+    "ionutvmi.path-autocomplete",
+    "abierbaum.vscode-file-peek",
     "dbaeumer.vscode-eslint",
     "eamodio.gitlens",
     "esbenp.prettier-vscode",
@@ -15,7 +15,6 @@
     "rbbit.typescript-hero",
     "streetsidesoftware.code-spell-checker",
     "vscode-icons-team.vscode-icons",
-    "xabikos.JavaScriptSnippets",
-    "yzhang.markdown-all-in-one"
+    "xabikos.JavaScriptSnippets"
   ]
 }

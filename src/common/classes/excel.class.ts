@@ -57,7 +57,10 @@ export class ExcelDocument {
   }
 
   write(fileName: string, res: Response) {
-    res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    res.setHeader(
+      'Content-Type',
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    );
     res.setHeader('Content-Disposition', `attachment; filename=${fileName}`);
     this.wb.xlsx.write(res, { zip: { compression: 'DEFLATE' } }).then(() => res.end());
   }

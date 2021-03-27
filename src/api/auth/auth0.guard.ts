@@ -35,7 +35,11 @@ export class Auth0Guard extends PassportAuthGuard(AUTH0_STRATEGY_NAME) {
    */
   handleRequest(err: Error, user: any, info: Error) {
     if (err || !user || info) {
-      const msg = err ? err.message : info ? info.message : 'Sorry, we were unable to process your request.';
+      const msg = err
+        ? err.message
+        : info
+        ? info.message
+        : 'Sorry, we were unable to process your request.';
       throw new UnauthorizedException(msg);
     }
     return user;

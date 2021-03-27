@@ -1,4 +1,10 @@
-import { CanActivate, ExecutionContext, Injectable, UnauthorizedException, UseGuards } from '@nestjs/common';
+import {
+  CanActivate,
+  ExecutionContext,
+  Injectable,
+  UnauthorizedException,
+  UseGuards
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
 
@@ -24,7 +30,8 @@ class AuthenticateGuard implements CanActivate {
     const authorization = req.get('token') || '';
 
     const [scheme, token] = authorization.split(' ');
-    if (scheme.toLowerCase() !== 'bearer') throw new UnauthorizedException('Invalid Authorization Scheme');
+    if (scheme.toLowerCase() !== 'bearer')
+      throw new UnauthorizedException('Invalid Authorization Scheme');
     if (!token) throw new UnauthorizedException('Invalid Authorization Token');
 
     try {

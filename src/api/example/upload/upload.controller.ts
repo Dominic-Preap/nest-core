@@ -1,4 +1,11 @@
-import { BadRequestException, Controller, Post, UploadedFile, UploadedFiles, UseInterceptors } from '@nestjs/common';
+import {
+  BadRequestException,
+  Controller,
+  Post,
+  UploadedFile,
+  UploadedFiles,
+  UseInterceptors
+} from '@nestjs/common';
 import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { ApiConsumes, ApiOperation, ApiTags } from '@nestjs/swagger';
 

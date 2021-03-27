@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## 0.12.0
+
+_*Mar 27, 2021*_
+
+- add `BaseRepository` in `@lib/typeorm` for custom raw query
+- add interfaces directory in `@models`
+- update `jest` configuration
+- update `@lib/mongoose` on deprecation warning
+- update `printWidth` option to 100 in `.prettierrc`
+- update linter to all files
+- update testing spec example in `AuthModule`
+- update `@lib/sequelize` using `@nestjs/sequelize`
+- update prefix `Model` to model class in `@models`
+- update sequelize controller
+- update SQL example files in `@queries`
+- update plopfile on `sequelize` and `typeorm` 
+- remove `ToArrayCreateLang`, `ToArrayUpdateLang` in `@lib/sequelize`
+- remove `sequelize.interfaces.ts` in `@lib/sequelize`
+- remove unnecessary functions in `user.model.ts`
+- remove `Cat`, `CatLocale` and `Language` model in `@models`
+- remove `rate-limiting.guard.ts` in favor of `nestjs/throttler`
+- remove `@types/callsite` in `package.json`
+
 ## 0.11.0
 
 _*Feb 05, 2021*_
