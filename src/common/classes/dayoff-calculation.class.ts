@@ -100,11 +100,11 @@ export class DayOffCalculation {
   setDayOffs(startDate: Date, endDate: Date, timezone: string) {
     // Remove timezone and set zero second
     // https://stackoverflow.com/questions/28198626/display-datetime-with-momentjs-without-timezone-conversion
-    const start = ((moment(startDate) as unknown) as Moment.Moment)
+    const start = (moment(startDate) as unknown as Moment.Moment)
       .tz(timezone)
       .utcOffset(0, true)
       .second(0);
-    const end = ((moment(endDate) as unknown) as Moment.Moment)
+    const end = (moment(endDate) as unknown as Moment.Moment)
       .tz(timezone)
       .utcOffset(0, true)
       .second(0);

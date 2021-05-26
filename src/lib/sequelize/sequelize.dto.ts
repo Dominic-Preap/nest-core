@@ -9,7 +9,7 @@ export class SequelizeConfig {
 
   @IsNotEmpty()
   @IsNumber()
-  @Transform(x => +x)
+  @Transform(x => +x.value)
   DB_PORT!: number;
 
   @IsNotEmpty()
@@ -30,11 +30,11 @@ export class SequelizeConfig {
 
   @IsNotEmpty()
   @IsBoolean()
-  @Transform((x: string) => x.toLowerCase() === 'true')
+  @Transform(x => String(x.value).toLowerCase() === 'true')
   DB_LOGGING!: boolean;
 
   @IsNotEmpty()
   @IsBoolean()
-  @Transform((x: string) => x.toLowerCase() === 'true')
+  @Transform(x => String(x.value).toLowerCase() === 'true')
   DB_SYNC!: boolean;
 }

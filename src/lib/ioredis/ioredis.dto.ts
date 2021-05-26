@@ -8,7 +8,7 @@ export class IORedisConfig {
 
   @IsNotEmpty()
   @IsNumber()
-  @Transform(x => +x)
+  @Transform(x => +x.value)
   REDIS_PORT!: number;
 
   @IsNotEmpty()

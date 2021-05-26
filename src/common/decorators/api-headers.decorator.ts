@@ -63,7 +63,7 @@ export class ApiCustomHeader {
 
   @IsOptional()
   @Type(() => Date)
-  @Transform(value => moment(value))
+  @Transform(x => moment(x.value))
   readonly timestamp: moment.Moment = moment();
 
   constructor(

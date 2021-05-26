@@ -10,7 +10,7 @@ export class GraphQLRequest {
    */
   async getCharacters(opt: GetCharactersOption) {
     const query = gql`
-      query($page: Int) {
+      query ($page: Int) {
         characters(page: $page) {
           info {
             count

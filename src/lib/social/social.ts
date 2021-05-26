@@ -63,9 +63,7 @@ export class Social {
     try {
       const url = 'https://api.linkedin.com/v1/people/~?format=json';
       const headers = { Authorization: `Bearer ${accessToken}` };
-      const { data } = await this.http
-        .get<LinkedinResult>(url, { headers })
-        .toPromise();
+      const { data } = await this.http.get<LinkedinResult>(url, { headers }).toPromise();
       return data;
     } catch (e) {
       const { response }: AxiosError = e;

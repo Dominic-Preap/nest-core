@@ -1,5 +1,5 @@
 import { HttpService } from '@nestjs/common';
-import { AxiosResponse } from '@nestjs/common/node_modules/axios';
+import { AxiosResponse } from 'axios';
 import { Observable } from 'rxjs';
 
 export class WowzaHelper {

@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.12.1
+
+_*May 26, 2021*_
+
+- update dependencies in `package.json`
+- update [breaking changes](https://github.com/mdevils/html-entities/blob/master/CHANGELOG.md#200) on `html-entities`
+- update [breaking changes](https://github.com/typestack/class-transformer/blob/develop/CHANGELOG.md#032-breaking-change---2021-01-14) on `class-transform`
+- update [breaking changes](https://github.com/prettier/eslint-config-prettier/blob/main/CHANGELOG.md#version-800-2021-02-21) on `eslint-config-prettier`
+
 ## 0.12.0
 
 _*Mar 27, 2021*_
@@ -15,7 +24,7 @@ _*Mar 27, 2021*_
 - update prefix `Model` to model class in `@models`
 - update sequelize controller
 - update SQL example files in `@queries`
-- update plopfile on `sequelize` and `typeorm` 
+- update plopfile on `sequelize` and `typeorm`
 - remove `ToArrayCreateLang`, `ToArrayUpdateLang` in `@lib/sequelize`
 - remove `sequelize.interfaces.ts` in `@lib/sequelize`
 - remove unnecessary functions in `user.model.ts`

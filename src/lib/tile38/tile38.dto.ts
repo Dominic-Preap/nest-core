@@ -8,7 +8,7 @@ export class Tile38Config {
 
   @IsNotEmpty()
   @IsNumber()
-  @Transform(x => +x)
+  @Transform(x => +x.value)
   TILE38_PORT!: number;
 
   @IsOptional()

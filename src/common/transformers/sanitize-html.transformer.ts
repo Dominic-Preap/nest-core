@@ -1,3 +1,7 @@
+import { Transform } from 'class-transformer';
+import { decode } from 'html-entities';
+import * as sanitizeHtml from 'sanitize-html';
+
 /*
 |*****************************************************************************************************
 | EXPLANATION:
@@ -21,12 +25,8 @@
 |*****************************************************************************************************
 */
 
-import { Transform } from 'class-transformer';
-import { Html4Entities, Html5Entities } from 'html-entities';
-import * as sanitizeHtml from 'sanitize-html';
-
-const { decode: decode4 } = new Html4Entities();
-const { decode: decode5 } = new Html5Entities();
+const decode4 = (text: string) => decode(text, { level: 'html4' });
+const decode5 = (text: string) => decode(text, { level: 'html5' });
 const defaultOptions: sanitizeHtml.IOptions = {
   allowedAttributes: {
     '*': ['style', 'class', 'href', 'src']
@@ -40,4 +40,4 @@ const defaultOptions: sanitizeHtml.IOptions = {
  * @see https://www.npmjs.com/package/html-entities
  */
 export const TransformToSanitizeHtml = (option?: sanitizeHtml.IOptions) =>
-  Transform(v => sanitizeHtml(decode5(decode4(v)), { ...defaultOptions, ...option }));
+  Transform(({ value }) => sanitizeHtml(decode5(decode4(value)), { ...defaultOptions, ...option }));

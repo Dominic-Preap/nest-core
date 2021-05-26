@@ -7,7 +7,7 @@ export class ConfigDto {
 
   @IsNotEmpty()
   @IsNumber()
-  @Transform(x => +x)
+  @Transform(x => +x.value)
   PORT!: number;
 
   @IsNotEmpty()
