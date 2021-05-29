@@ -195,7 +195,7 @@ module.exports = function (
       ['.gitignore'],
       ['.prettierrc'],
       ['README.sample.md', 'README.md'],
-      ['jest.json'],
+      ['jest.config.js'],
       ['nest-cli.json'],
       ['package.json'],
       ['process.json'],
