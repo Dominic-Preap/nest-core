@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.12.2
+
+_*Jun 21, 2021*_
+
+- renamed `excel4node` to `exceljs` from example folder
+- fixed validation on `ApiCustomHeaders` decorator
+
 ## 0.12.1
 
 _*May 26, 2021*_

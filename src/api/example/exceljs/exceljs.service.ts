@@ -4,7 +4,7 @@ import { Response } from 'express';
 import { ExcelDocument } from '@common';
 
 @Injectable()
-export class Excel4NodeService {
+export class ExcelJSService {
   async start(res: Response) {
     // ====================================================
     // Create a new instance of a ExcelDocument class

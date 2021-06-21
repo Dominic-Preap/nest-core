@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 
 import { DownloadController } from './download/download.controller';
-import { Excel4NodeController } from './excel4node/excel4node.controller';
-import { Excel4NodeService } from './excel4node/excel4node.service';
+import { ExcelJSController } from './exceljs/exceljs.controller';
+import { ExcelJSService } from './exceljs/exceljs.service';
 import { I18NextController } from './i18next/i18next.controller';
 import { IORedisController } from './ioredis/ioredis.controller';
 import { IORedisService } from './ioredis/ioredis.service';
@@ -18,7 +18,7 @@ import { UploadController } from './upload/upload.controller';
   controllers: [
     // -----------------
     DownloadController,
-    Excel4NodeController,
+    ExcelJSController,
     I18NextController,
     IORedisController,
     PDFMakeController,
@@ -30,7 +30,7 @@ import { UploadController } from './upload/upload.controller';
   ],
   providers: [
     // -----------------
-    Excel4NodeService,
+    ExcelJSService,
     IORedisService,
     PdfMakeService
   ]

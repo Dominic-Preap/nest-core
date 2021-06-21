@@ -1,94 +1,69 @@
-import { createParamDecorator, ExecutionContext } from '@nestjs/common';
+import { BadRequestException, createParamDecorator, ExecutionContext } from '@nestjs/common';
 import { Transform, Type } from 'class-transformer';
-import { Allow, IsOptional } from 'class-validator';
+import { Allow, IsOptional, validateOrReject } from 'class-validator';
 import { Request } from 'express';
 import * as moment from 'moment';
 
-import { IsOptionalString } from './dto.decorator';
+import { IsNotEmptyString, IsOptionalString } from './dto.decorator';
 
-type Platform = 'ios' | 'android' | 'web' | 'api';
-type LanguageType = 'en' | 'km' | 'zh' | 'ko';
-
-export const ApiCustomHeaders = createParamDecorator((args: unknown, ctx: ExecutionContext) => {
-  const req = ctx.switchToHttp().getRequest<Request>();
-
-  const xLanguage = req.get('x-language') || '';
-  const language = ['en', 'km', 'zh', 'ko'].includes(xLanguage) ? xLanguage : 'en';
-
-  return new ApiCustomHeader(
-    req.get('authorization'),
-    req.get('x-app-version'),
-    req.get('x-forwarded-for') || req.connection.remoteAddress || '127.0.0.1',
-    language as LanguageType,
-    req.get('x-latitude'),
-    req.get('x-longitude'),
-    req.get('x-platform') as Platform,
-    req.get('x-os-version'),
-    req.get('x-udid'),
-    req.get('x-timezone'),
-    moment(req.get('x-timestamp')).isValid() ? moment(req.headers['x-timestamp']) : moment()
-  );
-});
+export const ApiCustomHeaders = createParamDecorator(
+  async (args: unknown, ctx: ExecutionContext) => {
+    const req = ctx.switchToHttp().getRequest<Request>();
+    const header = new ApiCustomHeader(req);
+    try {
+      await validateOrReject(header);
+      return header;
+    } catch (err) {
+      throw new BadRequestException(Object.values(err[0].constraints));
+    }
+  }
+);
 
 export class ApiCustomHeader {
-  @IsOptionalString()
-  readonly authorization: string = '';
+  @IsNotEmptyString()
+  readonly appVersion!: string;
 
   @IsOptionalString()
-  readonly appVersion: string = '0.0.0';
+  readonly language!: string;
 
   @IsOptionalString()
-  readonly language: LanguageType = 'en';
+  readonly latitude!: string;
 
   @IsOptionalString()
-  readonly latitude: string = '0';
+  readonly longitude!: string;
 
   @IsOptionalString()
-  readonly longitude: string = '0';
+  readonly platform!: string;
 
   @IsOptionalString()
-  readonly platform: Platform = 'web';
+  readonly osVersion!: string;
 
   @IsOptionalString()
-  readonly osVersion: string = '0.0.0';
-
-  @IsOptionalString()
-  readonly udid: string = '';
+  readonly udid!: string;
 
   @Allow()
-  readonly ip: string = '127.0.0.1';
+  readonly ip!: string;
 
   @IsOptionalString()
-  readonly timezone: string = 'Asia/Phnom_Penh';
+  readonly timezone!: string;
 
   @IsOptional()
   @Type(() => Date)
   @Transform(x => moment(x.value))
-  readonly timestamp: moment.Moment = moment();
+  readonly timestamp!: moment.Moment;
 
-  constructor(
-    authorization = '',
-    appVersion = '0.0.0',
-    ip: string,
-    language: LanguageType = 'en',
-    latitude = '0',
-    longitude = '0',
-    platform: Platform = 'web',
-    osVersion = '0.0.0',
-    udid = '',
-    timezone = 'Asia/Phnom_Penh',
-    timestamp: moment.Moment = moment()
-  ) {
-    this.ip = ip;
-    this.authorization = authorization;
-    this.appVersion = appVersion;
-    this.language = ['en', 'km', 'zh', 'ko'].includes(language) ? language : 'en';
-    this.latitude = latitude;
-    this.longitude = longitude;
-    this.platform = ['web', 'ios', 'android', 'api'].includes(platform) ? platform : 'web';
-    this.osVersion = osVersion;
-    this.udid = udid;
-    this.timezone = timezone;
-    this.timestamp = timestamp;
+  constructor(req: Request) {
+    this.appVersion = req.get('x-app-version')!;
+    this.ip = req.get('x-forwarded-for') || req.socket.remoteAddress || '127.0.0.1';
+    this.language = ['en', 'km', 'zh'].find(x => x === req.get('x-language')) || 'en';
+    this.latitude = req.get('x-latitude') || '';
+    this.longitude = req.get('x-longitude') || '';
+    this.platform = ['ios', 'android', 'web', 'api'].find(x => x === req.get('x-platform')) || '';
+    this.osVersion = req.get('x-os-version') || '0.0.0';
+    this.udid = req.get('x-udid') || '';
+    this.timezone = req.get('x-timezone') || '';
+    this.timestamp = moment(req.get('x-timestamp')).isValid()
+      ? moment(req.headers['x-timestamp'])
+      : moment();
   }
 }

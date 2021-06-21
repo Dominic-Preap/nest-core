@@ -2,13 +2,13 @@ import { Controller, Get, Res } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 
-import { Excel4NodeService } from './excel4node.service';
+import { ExcelJSService } from './exceljs.service';
 
 @ApiBearerAuth()
-@ApiTags('Example - Excel4Node')
-@Controller('example/excel4node')
-export class Excel4NodeController {
-  constructor(private readonly service: Excel4NodeService) {}
+@ApiTags('Example - ExcelJS')
+@Controller('example/ExcelJS')
+export class ExcelJSController {
+  constructor(private readonly service: ExcelJSService) {}
 
   @Get()
   @ApiOperation({ summary: 'Export as Excel File' })

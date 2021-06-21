@@ -1,7 +1,7 @@
 {
   "name": "backend-core-project",
   "description": "backend-core-project description",
-  "version": "0.12.1",
+  "version": "0.12.2",
   "private": true,
   "engines": {
     "node": ">= 12.13.0"
