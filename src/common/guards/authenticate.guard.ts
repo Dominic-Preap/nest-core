@@ -45,7 +45,7 @@ class AuthenticateGuard implements CanActivate {
       // if (!clientApp) throw new UnauthorizedException('Client application was not found');
 
       return true;
-    } catch (e) {
+    } catch (e: any) {
       throw new UnauthorizedException(e.name + ' ' + e.message);
     }
   }

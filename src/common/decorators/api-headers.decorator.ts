@@ -13,7 +13,7 @@ export const ApiCustomHeaders = createParamDecorator(
     try {
       await validateOrReject(header);
       return header;
-    } catch (err) {
+    } catch (err: any) {
       throw new BadRequestException(Object.values(err[0].constraints));
     }
   }

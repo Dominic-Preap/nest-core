@@ -1,4 +1,5 @@
-import { Global, HttpModule, Module } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
+import { Global, Module } from '@nestjs/common';
 
 import { socialProvider } from './social.provider';
 

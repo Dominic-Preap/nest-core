@@ -34,7 +34,7 @@ describe('AuthService', () => {
     it('should throw error when account is incorrect', async () => {
       try {
         await authService.login({ username: 'fake', password: 'wrong' });
-      } catch (e) {
+      } catch (e: any) {
         expect(e).toBeInstanceOf(InvalidAccountError);
         expect(e.message).toMatch('Invalid username or password.');
       }

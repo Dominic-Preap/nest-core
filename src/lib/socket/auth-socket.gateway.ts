@@ -6,6 +6,7 @@ import {
   WebSocketGateway,
   WebSocketServer
 } from '@nestjs/websockets';
+import { Server, Socket } from 'socket.io';
 
 import { ExceptionFilter } from './socket.filter';
 
@@ -13,10 +14,10 @@ import { ExceptionFilter } from './socket.filter';
 @WebSocketGateway({ namespace: 'auth', transports: ['websocket'] })
 export class AuthSocketGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer()
-  private server!: SocketIO.Server;
+  private server!: Server;
   private logger = new Logger('AuthGateway');
 
-  handleConnection(socket: SocketIO.Socket) {
+  handleConnection(socket: Socket) {
     // ! TODO: need to validate hash before join room, check VIP project for more info
     // const token = socket.handshake.query.token;
     // this.service
@@ -30,12 +31,12 @@ export class AuthSocketGateway implements OnGatewayConnection, OnGatewayDisconne
     //   .catch(x => socket.disconnect());
   }
 
-  handleDisconnect(socket: SocketIO.Socket) {
+  handleDisconnect(socket: Socket) {
     this.logger.log(`Socket ID: ${socket.id} disconnected!`);
   }
 
   @SubscribeMessage('WELCOME')
-  onEvent(client: SocketIO.Client, data: any) {
+  onEvent() {
     return { data: 'WELCOME AUTH', event: 'WELCOME' };
   }
 

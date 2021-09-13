@@ -1,18 +1,17 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { createReadStream, createWriteStream, existsSync } from 'fs';
+import { createReadStream, existsSync } from 'fs';
 import * as mime from 'mime-types';
 import * as path from 'path';
-import * as request from 'request';
 import * as shell from 'shelljs';
 
 import { C, T } from '@common';
 import { GoogleCloudStorage, InjectGoogleCloudStorage } from '@lib/google-cloud-storage';
 
-import { ImageResizeHelper, Size } from './upload.helper';
+import { Size } from './upload.helper';
 
 @Injectable()
 export class UploadService {
-  private helper = new ImageResizeHelper();
+  // private helper = new ImageResizeHelper(); // TODO:
 
   constructor(@InjectGoogleCloudStorage() private readonly storage: GoogleCloudStorage) {}
 
@@ -53,37 +52,38 @@ export class UploadService {
     const TEMP_PATH = path.resolve('.', 'public', 'temp-cloud');
     if (!existsSync(TEMP_PATH)) shell.mkdir('-p', TEMP_PATH);
 
+    // TODO: will revisit later
     // Get temp url from google cloud storage
-    const gcloudTempUrl = this.storage.config.getTempUrl(fileName);
+    // const gcloudTempUrl = this.storage.config.getTempUrl(fileName);
 
-    const req = request
-      .get(gcloudTempUrl)
-      .on('error', err => console.error('Cannot download photo', gcloudTempUrl))
-      .on('response', resp => {
-        if (resp.statusCode === 200) {
-          // declare file name to download in temp directory
-          const filePath = path.resolve(TEMP_PATH, fileName);
-          req.pipe(createWriteStream(filePath)).on('close', async () => {
-            // resize image base on type
+    // const req = request
+    //   .get(gcloudTempUrl)
+    //   .on('error', err => console.error('Cannot download photo', gcloudTempUrl))
+    //   .on('response', resp => {
+    //     if (resp.statusCode === 200) {
+    //       // declare file name to download in temp directory
+    //       const filePath = path.resolve(TEMP_PATH, fileName);
+    //       req.pipe(createWriteStream(filePath)).on('close', async () => {
+    //         // resize image base on type
 
-            // if (resize) await resizeImage(`${TEMP_PATH}/${fileName}`, folderType);
-            if (resize) await this.helper.resize(`${TEMP_PATH}/${fileName}`, folderType, resize);
+    //         // if (resize) await resizeImage(`${TEMP_PATH}/${fileName}`, folderType);
+    //         if (resize) await this.helper.resize(`${TEMP_PATH}/${fileName}`, folderType, resize);
 
-            // upload all resize and original photos then remove from temp directory
-            const regexPath = path.resolve(TEMP_PATH, `${fileName.split('.')[0]}*`); // ex: Test.jpg, Test_s.jpg, Test_l.jpg
-            const allFiles = shell.ls(regexPath); // list all files by regex
-            const bucket = folderType;
-            await Promise.all(
-              allFiles.map(f => this.uploadToCloud(`${bucket}/${path.basename(f)}`, f))
-            ); // 5 files to be uploaded
+    //         // upload all resize and original photos then remove from temp directory
+    //         const regexPath = path.resolve(TEMP_PATH, `${fileName.split('.')[0]}*`); // ex: Test.jpg, Test_s.jpg, Test_l.jpg
+    //         const allFiles = shell.ls(regexPath); // list all files by regex
+    //         const bucket = folderType;
+    //         await Promise.all(
+    //           allFiles.map(f => this.uploadToCloud(`${bucket}/${path.basename(f)}`, f))
+    //         ); // 5 files to be uploaded
 
-            shell.rm('-rf', regexPath); // remove by regex from temp directory
-            await file.delete(); // remove file in temp in google cloud
-          });
-        } else {
-          console.log('download photo', resp.statusCode, resp.statusMessage);
-        }
-      });
+    //         shell.rm('-rf', regexPath); // remove by regex from temp directory
+    //         await file.delete(); // remove file in temp in google cloud
+    //       });
+    //     } else {
+    //       console.log('download photo', resp.statusCode, resp.statusMessage);
+    //     }
+    //   });
   }
 
   private async uploadToCloud(fileName: string, filePath: string) {

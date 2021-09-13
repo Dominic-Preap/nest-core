@@ -8,7 +8,7 @@ import {
   WsException,
   WsResponse
 } from '@nestjs/websockets';
-import { Client, Server, Socket } from 'socket.io';
+import { Server, Socket } from 'socket.io';
 
 import { ExceptionFilter } from './socket.filter';
 
@@ -28,7 +28,7 @@ export class SocketGateway implements OnGatewayConnection, OnGatewayDisconnect {
   }
 
   @SubscribeMessage('welcome')
-  onEvent(client: Client, data: any): WsResponse<string> {
+  onEvent(): WsResponse<string> {
     throw new WsException('Error Testing');
     return { data: 'WELCOME APP', event: 'welcome' };
   }

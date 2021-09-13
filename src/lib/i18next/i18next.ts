@@ -1,12 +1,11 @@
 import { Logger } from '@nestjs/common';
 import { HttpAdapterHost } from '@nestjs/core';
-import * as i18nextMiddleware from 'i18next-express-middleware';
-import * as FilesystemBackend from 'i18next-node-fs-backend';
+import { i18n } from 'i18next';
+import * as FilesystemBackend from 'i18next-fs-backend';
+import * as i18nextMiddleware from 'i18next-http-middleware';
 import { resolve } from 'path';
 
 import { format } from './i18next.helper';
-
-import { i18n } from 'i18next';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 export const i18next: i18n = require('i18next');

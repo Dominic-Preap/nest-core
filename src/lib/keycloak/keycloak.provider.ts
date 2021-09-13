@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+import Keycloak from '@keycloak/keycloak-admin-client';
 import { Provider } from '@nestjs/common';
-import Keycloak from 'keycloak-admin';
 import { Issuer } from 'openid-client';
 
 import { ConfigService } from '../config';

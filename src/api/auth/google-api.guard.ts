@@ -1,12 +1,13 @@
+import { HttpService } from '@nestjs/axios';
 import {
   CanActivate,
   ExecutionContext,
   ForbiddenException,
-  HttpService,
   Injectable,
   UnauthorizedException
 } from '@nestjs/common';
 import { Request } from 'express';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 export class GoogleAPIGuard implements CanActivate {
@@ -34,9 +35,10 @@ export class GoogleAPIGuard implements CanActivate {
 
   async decode(token: string) {
     try {
-      const { data } = await this.http
-        .get<GoogleTokenInfo>(this.URL, { params: { id_token: token } })
-        .toPromise();
+      const { data } = await lastValueFrom(
+        this.http.get<GoogleTokenInfo>(this.URL, { params: { id_token: token } })
+      );
+
       return data;
     } catch (error) {
       throw new UnauthorizedException('Cannot validate token from google');

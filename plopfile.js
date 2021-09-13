@@ -328,19 +328,19 @@ module.exports = function (
       keycloak: [
         '@nestjs/passport',
         'jwks-rsa',
-        'keycloak-admin',
+        '@keycloak/keycloak-admin-client',
         'openid-client',
         'passport',
         'passport-jwt',
         '@types/passport-jwt'
       ],
-      i18next: ['i18next', 'i18next-express-middleware', 'i18next-node-fs-backend'],
+      i18next: ['i18next', 'i18next-http-middleware', 'i18next-fs-backend'],
       ioredis: ['ioredis', '@types/ioredis'],
       jwt: [],
       mailer: ['nodemailer', '@types/nodemailer'],
-      mongoose: ['mongoose', '@typegoose/typegoose', '@types/mongoose'],
+      mongoose: ['mongoose', '@typegoose/typegoose'],
       pagination: [],
-      sendbird: ['form-data'],
+      sendbird: ['@nestjs/axios', 'form-data'],
       sequelize: [
         'callsites',
         'mysql2',
@@ -351,21 +351,19 @@ module.exports = function (
         '@types/node',
         '@types/string-template'
       ],
-      social: ['google-auth-library', 'twitter'],
+      social: ['@nestjs/axios', 'google-auth-library', 'twitter-api-v2'],
       socket: [
         '@nestjs/websockets',
         '@nestjs/platform-socket.io',
-        '@types/socket.io',
         'socket.io-redis',
-        '@types/socket.io-redis'
       ],
       tile38: ['ioredis', '@types/ioredis'],
       typeorm: ['@nestjs/typeorm', 'mysql2', 'typeorm', 'callsites'],
       twilio: ['twilio'],
-      wowza: [],
+      wowza: ['@nestjs/axios'],
       // -------------------------------------------------
       'cache-manager': ['cache-manager'],
-      'sanitize-html': ['sanitize-html', '@types/sanitize-html', 'html-entities', '@types/html-entities'],
+      'sanitize-html': ['sanitize-html', '@types/sanitize-html', 'html-entities'],
       archiver: ['archiver', '@types/archiver'],
       dayoff: ['moment-range'],
       excel: ['exceljs'],

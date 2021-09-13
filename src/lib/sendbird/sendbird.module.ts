@@ -1,4 +1,5 @@
-import { Global, HttpModule, Module } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
+import { Global, Module } from '@nestjs/common';
 
 import { SendBirdProvider } from './sendbird.provider';
 import { SendBirdWebhookGuard } from './webhook';

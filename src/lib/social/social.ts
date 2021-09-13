@@ -1,48 +1,45 @@
-import { BadRequestException, HttpService } from '@nestjs/common';
-import { AxiosError, AxiosResponse } from 'axios';
+import { HttpService } from '@nestjs/axios';
+import { BadRequestException } from '@nestjs/common';
+import { AxiosError } from 'axios';
 import { OAuth2Client } from 'google-auth-library';
-import * as Twitter from 'twitter';
+import { lastValueFrom } from 'rxjs';
+import TwitterApi from 'twitter-api-v2';
 
 import { SocialConfig } from './social.dto';
 import {
   FacebookException,
   FacebookResult,
   LinkedinException,
-  LinkedinResult,
-  TwitterResult
+  LinkedinResult
 } from './social.interface';
 
 export class Social {
   private googleClient = new OAuth2Client();
   constructor(private readonly config: SocialConfig, private readonly http: HttpService) {}
 
-  async getTwitterData(accessTokenKey: string, accessTokenSecret: string) {
-    const client = new Twitter({
-      consumer_key: this.config.TWITTER_CONSUMER_KEY,
-      consumer_secret: this.config.TWITTER_CONSUMER_SECRET,
-      access_token_key: accessTokenKey,
-      access_token_secret: accessTokenSecret
+  async getTwitterData(accessToken: string, accessSecret: string) {
+    const client = new TwitterApi({
+      appKey: this.config.TWITTER_CONSUMER_KEY,
+      appSecret: this.config.TWITTER_CONSUMER_SECRET,
+      accessToken,
+      accessSecret
     });
 
-    return new Promise<TwitterResult>((resolve, reject) =>
-      client.get('account/verify_credentials', (error, tweet) =>
-        error ? reject(error) : resolve(tweet)
-      )
-    ).catch(e => {
-      const [error] = e;
-      throw new BadRequestException(error.message);
-    });
+    try {
+      return client.v1.verifyCredentials();
+    } catch (err: any) {
+      throw new BadRequestException(err.message);
+    }
   }
 
   async getFacebookData(accessToken) {
     try {
       const url = `https://graph.facebook.com/me?fields=id,email,first_name,last_name&access_token=${accessToken}`;
-      const { data } = await this.http.get<FacebookResult>(url).toPromise();
+      const { data } = await lastValueFrom(this.http.get<FacebookResult>(url));
       return data;
-    } catch (e) {
-      const { response }: AxiosError = e;
-      const res = response as AxiosResponse<FacebookException>;
-      throw new BadRequestException(res.data.error.message);
+    } catch (e: any) {
+      const { response: res }: AxiosError<FacebookException> = e;
+      throw new BadRequestException(res?.data.error.message);
     }
   }
 
@@ -54,7 +51,7 @@ export class Social {
         audience: this.config.GOOGLE_CLIENT_ID
       });
       return !ticket ? null : ticket!.getPayload();
-    } catch (error) {
+    } catch (error: any) {
       throw new BadRequestException(error.message);
     }
   }
@@ -63,12 +60,11 @@ export class Social {
     try {
       const url = 'https://api.linkedin.com/v1/people/~?format=json';
       const headers = { Authorization: `Bearer ${accessToken}` };
-      const { data } = await this.http.get<LinkedinResult>(url, { headers }).toPromise();
+      const { data } = await lastValueFrom(await this.http.get<LinkedinResult>(url, { headers }));
       return data;
-    } catch (e) {
-      const { response }: AxiosError = e;
-      const res = response as AxiosResponse<LinkedinException>;
-      throw new BadRequestException(res.data.message);
+    } catch (e: any) {
+      const { response: res }: AxiosError<LinkedinException> = e;
+      throw new BadRequestException(res?.data.message);
     }
   }
 }

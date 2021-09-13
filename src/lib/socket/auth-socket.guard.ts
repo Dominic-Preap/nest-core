@@ -1,5 +1,7 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { WsException } from '@nestjs/websockets';
+import { Socket } from 'socket.io';
+
 // import { verify } from 'jsonwebtoken';
 // import { promisify } from 'util';
 
@@ -10,7 +12,7 @@ export class AuthSocketGuard implements CanActivate {
   // constructor(private readonly config: ConfigService) {}
 
   async canActivate(context: ExecutionContext) {
-    const socket = context.switchToWs().getClient<SocketIO.Socket>();
+    const socket = context.switchToWs().getClient<Socket>();
     const accessToken = socket.handshake.query.accessToken;
 
     if (!accessToken) throw new WsException('Missing token.');

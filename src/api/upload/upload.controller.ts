@@ -25,7 +25,7 @@ export class UploadController {
   @ApiFileBody('filename')
   @ApiOperation({ summary: 'Upload CSV file' })
   @UseInterceptors(FileInterceptor('filename', CSVMulterOption))
-  uploadVideo(@UploadedFile() file: Express.Multer.File) {
+  uploadCSV(@UploadedFile() file: Express.Multer.File) {
     return this.service.upload(file, 'csv');
   }
 }

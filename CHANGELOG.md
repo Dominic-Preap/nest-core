@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 0.13.0
+
+_*Sep 14, 2021*_
+
+- upgrade **@nestjs** to v8
+- upgrade `husky` to v7
+- add `@nest/axios` for HttpModule (Wowza, Sendbird, Social)
+- fix some errors and typo of typescript
+- fix deprecation of rxjs `.toPromise()` to `lastValueFrom()`
+- update dependencies in `package.json`
+- update plopfile on replace dependencies below
+- replace dependencies
+  - `twitter` to `twitter-api-v2`
+  - `i18next-express-middleware` to `i18next-http-middleware`
+  - `i18next-node-fs-backend` to `i18next-fs-backend`
+  - `keycloak-admin` to `@keycloak/keycloak-admin-client`
+- remove dependencies
+  - `@types/mongoose`
+  - `@types/socket.io`
+  - `@types/socket.io-redis`
+
 ## 0.12.2
 
 _*Jun 21, 2021*_

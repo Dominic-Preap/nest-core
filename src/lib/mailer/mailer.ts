@@ -53,8 +53,8 @@ export class Mailer {
         await this.transporter.sendMail(opts);
         this.logger.log(`Mail sent to ${opts.to}`);
       }
-    } catch (error) {
-      this.logger.error(error.message, error.stack);
+    } catch (err: any) {
+      this.logger.error(err.message, err.stack);
     }
   }
 
