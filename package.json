@@ -96,7 +96,7 @@
     "sequelize": "6.6.2",
     "sequelize-typescript": "2.1.0",
     "sharp": "0.29.1",
-    "shelljs": "0.8.4",
+    "shelljs": "0.8.5",
     "soap": "0.42.0",
     "socket.io-redis": "6.1.1",
     "string-template": "1.0.0",
