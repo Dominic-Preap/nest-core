@@ -95,7 +95,7 @@
     "sanitize-html": "2.5.0",
     "sequelize": "6.6.2",
     "sequelize-typescript": "2.1.0",
-    "sharp": "0.29.1",
+    "sharp": "0.30.5",
     "shelljs": "0.8.4",
     "soap": "0.42.0",
     "socket.io-redis": "6.1.1",
