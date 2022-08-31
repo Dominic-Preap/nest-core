@@ -78,7 +78,7 @@
     "mime-types": "2.1.32",
     "moment": "2.29.1",
     "moment-range": "4.0.2",
-    "moment-timezone": "0.5.33",
+    "moment-timezone": "0.5.35",
     "mongoose": "5.13.8",
     "morgan": "1.10.0",
     "mysql2": "2.3.0",
